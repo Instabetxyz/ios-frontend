@@ -14,4 +14,8 @@ enum Constants {
 
     // Backend (stubbed for now — set to your ngrok/backend URL when ready)
     static let backendBaseUrl = "http://localhost:3000"
+
+    // StreamBet prediction market API
+    static let streamBetBaseUrl = "https://api.streambet.xyz/v1"
+    static let streamBetWsUrl = "wss://api.streambet.xyz/v1/stream/websocket"
 }

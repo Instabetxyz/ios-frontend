@@ -8,9 +8,19 @@ struct HomeView: View {
                     Label("Feed", systemImage: "play.rectangle.fill")
                 }
 
+            MarketsView()
+                .tabItem {
+                    Label("Markets", systemImage: "chart.bar.xaxis")
+                }
+
             BroadcastView()
                 .tabItem {
                     Label("Go Live", systemImage: "video.badge.plus")
+                }
+
+            AgentsView()
+                .tabItem {
+                    Label("Agents", systemImage: "cpu")
                 }
 
             ProfileView()

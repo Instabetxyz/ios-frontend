@@ -7,6 +7,7 @@ class AppState: ObservableObject {
     @Published var isAuthenticated = false
     @Published var walletAddress: String?
     @Published var userName: String?
+    @Published var authToken: String?
 
     private var cancellables = Set<AnyCancellable>()
 
@@ -18,6 +19,17 @@ class AppState: ObservableObject {
             .sink { [weak self] user in
                 self?.isAuthenticated = user != nil
                 self?.userName = user?.email
+            }
+            .store(in: &cancellables)
+
+        sdk.auth.tokenChanges
+            .receive(on: DispatchQueue.main)
+            .sink { [weak self] token in
+                self?.authToken = token
+                StreamBetClient.shared.authToken = token
+                if let token {
+                    StreamBetWebSocket.shared.connect(token: token)
+                }
             }
             .store(in: &cancellables)
 

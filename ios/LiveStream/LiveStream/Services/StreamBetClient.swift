@@ -84,34 +84,4 @@ class StreamBetClient: ObservableObject {
         ))
     }
 
-    // MARK: - Agents
-
-    func getAgents(sortBy: String? = nil, limit: Int = 20, cursor: String? = nil) async throws -> PaginatedAgents {
-        var query = "?limit=\(limit)"
-        if let sortBy { query += "&sort_by=\(sortBy)" }
-        if let cursor { query += "&cursor=\(cursor)" }
-        return try await get("/agents\(query)")
-    }
-
-    func getAgentDetail(id: String) async throws -> SBAgentDetail {
-        return try await get("/agents/\(id)")
-    }
-
-    func followAgent(
-        agentId: String,
-        mode: SBFollowMode,
-        copyFraction: Double?,
-        maxBetWei: String?
-    ) async throws -> SBFollowResponse {
-        struct Body: Encodable {
-            let mode: SBFollowMode
-            let copyFraction: Double?
-            let maxBetWei: String?
-        }
-        return try await post("/agents/\(agentId)/follow", body: Body(
-            mode: mode,
-            copyFraction: copyFraction,
-            maxBetWei: maxBetWei
-        ))
-    }
 }

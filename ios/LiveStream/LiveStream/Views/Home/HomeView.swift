@@ -18,11 +18,6 @@ struct HomeView: View {
                     Label("Go Live", systemImage: "video.badge.plus")
                 }
 
-            AgentsView()
-                .tabItem {
-                    Label("Agents", systemImage: "cpu")
-                }
-
             ProfileView()
                 .tabItem {
                     Label("Profile", systemImage: "person.circle.fill")

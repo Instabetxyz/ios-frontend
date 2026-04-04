@@ -13,9 +13,7 @@
 		0C058FE795ABED50F60AA2D3 /* StreamPlayerView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 99EF66763A3F3872A731A305 /* StreamPlayerView.swift */; };
 		108C51F907410CEA178FE53C /* BroadcastView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6E0E9CD40F0B6A4ABF55C8F2 /* BroadcastView.swift */; };
 		1A629A4C4B7225CBBA9D86E3 /* LiveStreamApp.swift in Sources */ = {isa = PBXBuildFile; fileRef = FC237DDA5ED654DBBBBBCEBB /* LiveStreamApp.swift */; };
-		292EE4945F23B2FB32669DC4 /* AgentsView.swift in Sources */ = {isa = PBXBuildFile; fileRef = E1FF483BA8F5FAB70E5B5FA9 /* AgentsView.swift */; };
 		2D6FAF3799CA2A06354D7769 /* MarketsView.swift in Sources */ = {isa = PBXBuildFile; fileRef = D1B3650596B2F23C7AA4CD9C /* MarketsView.swift */; };
-		3366D2CC7295803E54D06BD2 /* AgentDetailView.swift in Sources */ = {isa = PBXBuildFile; fileRef = A5C340049C0DEFC24C17ED6B /* AgentDetailView.swift */; };
 		35B5C759D2DD229A5C401E43 /* DynamicSDK+Safe.swift in Sources */ = {isa = PBXBuildFile; fileRef = 87B521059A54A8E0250156F7 /* DynamicSDK+Safe.swift */; };
 		38C418CB67019E458AE3A763 /* Stream.swift in Sources */ = {isa = PBXBuildFile; fileRef = 24157B8EDD7F20854F281D0A /* Stream.swift */; };
 		4D9234C7B9B29A25FFE7D505 /* StreamBetWebSocket.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8AEDAB0DAFB54EE6E368839E /* StreamBetWebSocket.swift */; };
@@ -50,11 +48,9 @@
 		8AEDAB0DAFB54EE6E368839E /* StreamBetWebSocket.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = StreamBetWebSocket.swift; sourceTree = "<group>"; };
 		8E3923BC5961B534D38EC7C2 /* ProfileView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ProfileView.swift; sourceTree = "<group>"; };
 		99EF66763A3F3872A731A305 /* StreamPlayerView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = StreamPlayerView.swift; sourceTree = "<group>"; };
-		A5C340049C0DEFC24C17ED6B /* AgentDetailView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AgentDetailView.swift; sourceTree = "<group>"; };
 		A6D6CDE40118BC0AC07D7DBF /* StreamBetClient.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = StreamBetClient.swift; sourceTree = "<group>"; };
 		AFEC6C9C108DAC57F243ED2E /* StreamFeedView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = StreamFeedView.swift; sourceTree = "<group>"; };
 		D1B3650596B2F23C7AA4CD9C /* MarketsView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MarketsView.swift; sourceTree = "<group>"; };
-		E1FF483BA8F5FAB70E5B5FA9 /* AgentsView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AgentsView.swift; sourceTree = "<group>"; };
 		E41FB8199FA960BF2FE9FF5D /* AppState.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppState.swift; sourceTree = "<group>"; };
 		F77EB18C7AD055F84772894C /* LivePlayerView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LivePlayerView.swift; sourceTree = "<group>"; };
 		FC237DDA5ED654DBBBBBCEBB /* LiveStreamApp.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LiveStreamApp.swift; sourceTree = "<group>"; };
@@ -102,7 +98,6 @@
 			isa = PBXGroup;
 			children = (
 				530FFD4549C2AEF1643DAD80 /* RootView.swift */,
-				CD50843C73A80DF512B85194 /* Agents */,
 				BF6F1FA8D60C592CC3BE43D9 /* Auth */,
 				574A890D83A67DCA0511951E /* Home */,
 				1949C5163614887AAE1CACAC /* Markets */,
@@ -172,15 +167,6 @@
 				4518FAF2EBBFFFE2B5C6950B /* AuthView.swift */,
 			);
 			path = Auth;
-			sourceTree = "<group>";
-		};
-		CD50843C73A80DF512B85194 /* Agents */ = {
-			isa = PBXGroup;
-			children = (
-				A5C340049C0DEFC24C17ED6B /* AgentDetailView.swift */,
-				E1FF483BA8F5FAB70E5B5FA9 /* AgentsView.swift */,
-			);
-			path = Agents;
 			sourceTree = "<group>";
 		};
 		EC2CB021486BFFDCBB86EA9F /* LiveStream */ = {
@@ -255,8 +241,6 @@
 			buildActionMask = 2147483647;
 			files = (
 				848A9C4725E2C0301B8B8CF7 /* APIClient.swift in Sources */,
-				3366D2CC7295803E54D06BD2 /* AgentDetailView.swift in Sources */,
-				292EE4945F23B2FB32669DC4 /* AgentsView.swift in Sources */,
 				C00C3F003460DB2F64A657BA /* AppState.swift in Sources */,
 				D0694D378946494AD7454E43 /* AuthView.swift in Sources */,
 				108C51F907410CEA178FE53C /* BroadcastView.swift in Sources */,

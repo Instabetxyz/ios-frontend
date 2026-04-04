@@ -10,10 +10,6 @@ enum SBBetSide: String, Codable {
     case yes, no
 }
 
-enum SBFollowMode: String, Codable {
-    case copy, short, none
-}
-
 // MARK: - Market list item (GET /v1/markets)
 
 struct SBMarket: Identifiable, Codable {
@@ -153,101 +149,6 @@ struct SBMarketPool: Codable {
     let noOdds: Double
     let totalVolumeWei: String
     let bettorsCount: Int
-}
-
-// MARK: - Agents (GET /v1/agents)
-
-struct SBAgent: Identifiable, Codable {
-    var id: String { agentId }
-    let agentId: String
-    let name: String
-    let inftId: String?
-    let walletAddress: String
-    let pnlWei: String
-    let winRate: Double
-    let totalBets: Int
-    let followersCount: Double
-    let totalVolumeWei: String
-    let registeredAt: Int
-
-    var pnlEth: Double { weiToEth(pnlWei) }
-    var totalVolumeEth: Double { weiToEth(totalVolumeWei) }
-    var shortAddress: String {
-        guard walletAddress.count > 10 else { return walletAddress }
-        return walletAddress.prefix(6) + "..." + walletAddress.suffix(4)
-    }
-}
-
-struct PaginatedAgents: Codable {
-    let agents: [SBAgent]
-    let nextCursor: String?
-    let total: Int
-}
-
-// MARK: - Agent detail (GET /v1/agents/:id)
-
-struct SBAgentDetail: Codable {
-    let agentId: String
-    let name: String
-    let description: String?
-    let walletAddress: String
-    let inftId: String?
-    let inftMetadataUri: String?
-    let ogStorageKey: String?
-    let stats: SBAgentStats
-    let followers: [SBFollower]
-    let pnlHistory: [SBPnLHistory]
-    let recentBets: [SBAgentBet]
-    let registeredAt: Int
-}
-
-struct SBAgentStats: Codable {
-    let pnlWei: String
-    let winRate: Double
-    let totalBets: Int
-    let avgBetSizeWei: String
-    let followersCount: Double
-    let totalVolumeWei: String
-
-    var pnlEth: Double { weiToEth(pnlWei) }
-    var avgBetSizeEth: Double { weiToEth(avgBetSizeWei) }
-    var totalVolumeEth: Double { weiToEth(totalVolumeWei) }
-}
-
-struct SBFollower: Codable {
-    let userId: String
-    let mode: SBFollowMode
-    let copyFraction: Double?
-    let maxBetWei: String?
-}
-
-struct SBPnLHistory: Codable {
-    let period: String
-    let pnlWei: String
-
-    var pnlEth: Double { weiToEth(pnlWei) }
-}
-
-struct SBAgentBet: Identifiable, Codable {
-    var id: String { betId }
-    let betId: String
-    let marketId: String
-    let side: SBBetSide
-    let amountWei: String
-    let placedAt: Int
-    let outcome: String?
-
-    var amountEth: Double { weiToEth(amountWei) }
-}
-
-struct SBFollowResponse: Codable {
-    let followerId: String
-    let agentId: String
-    let mode: SBFollowMode
-    let copyFraction: Double?
-    let maxBetWei: String?
-    let registryTxHash: String
-    let activeSince: Int
 }
 
 // MARK: - WebSocket event models

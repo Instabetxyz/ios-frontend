@@ -1,8 +1,8 @@
 import SwiftUI
+import DynamicSDKSwift
 
 struct AuthView: View {
     @EnvironmentObject var appState: AppState
-    @State private var isLoading = false
 
     var body: some View {
         ZStack {
@@ -12,11 +12,11 @@ struct AuthView: View {
                 Spacer()
 
                 VStack(spacing: 12) {
-                    Image(systemName: "video.fill")
+                    Image(systemName: "play.tv.fill")
                         .font(.system(size: 60))
-                        .foregroundStyle(.red)
+                        .foregroundStyle(.purple)
 
-                    Text("LiveStream")
+                    Text("Arcadia")
                         .font(.system(size: 36, weight: .bold))
                         .foregroundStyle(.white)
 
@@ -29,24 +29,20 @@ struct AuthView: View {
 
                 VStack(spacing: 16) {
                     Button {
-                        signIn()
-                    } label: {
-                        HStack {
-                            if isLoading {
-                                ProgressView()
-                                    .tint(.black)
-                            } else {
-                                Text("Sign in")
-                                    .font(.headline)
-                            }
+                        do {
+                            try DynamicSDK.shared?.ui.showAuth()
+                        } catch {
+                            print("Error showing auth: \(error)")
                         }
-                        .frame(maxWidth: .infinity)
-                        .frame(height: 56)
-                        .background(.white)
-                        .foregroundStyle(.black)
-                        .clipShape(RoundedRectangle(cornerRadius: 14))
+                    } label: {
+                        Text("Connect Wallet")
+                            .font(.headline)
+                            .frame(maxWidth: .infinity)
+                            .padding()
+                            .background(.purple)
+                            .foregroundStyle(.white)
+                            .clipShape(RoundedRectangle(cornerRadius: 14))
                     }
-                    .disabled(isLoading)
 
                     Text("Powered by Dynamic · Stored on 0G")
                         .font(.caption)
@@ -55,18 +51,6 @@ struct AuthView: View {
                 .padding(.horizontal, 32)
                 .padding(.bottom, 48)
             }
-        }
-    }
-
-    private func signIn() {
-        isLoading = true
-        // TODO: Replace with Dynamic SDK auth
-        // DynamicSDK.shared.showAuth()
-        // For now, simulate login after short delay
-        Task {
-            try? await Task.sleep(nanoseconds: 800_000_000)
-            appState.simulateLogin()
-            isLoading = false
         }
     }
 }

@@ -77,7 +77,9 @@ struct ProfileView: View {
 
                 Section {
                     Button(role: .destructive) {
-                        appState.logout()
+                        Task {
+                            await appState.logout()
+                        }
                     } label: {
                         HStack {
                             Spacer()
@@ -97,7 +99,7 @@ struct ProfileView: View {
         isLoading = true
         defer { isLoading = false }
 
-        balance = "0.00 OG" // TODO: fetch from Dynamic SDK
+        balance = "0.00 OG"
         let all = (try? await APIClient.shared.getStreams()) ?? []
         myStreams = all.filter { $0.creatorAddress.lowercased() == appState.walletAddress?.lowercased() }
     }
@@ -105,9 +107,5 @@ struct ProfileView: View {
 
 #Preview {
     ProfileView()
-        .environmentObject({
-            let s = AppState()
-            s.simulateLogin()
-            return s
-        }())
+        .environmentObject(AppState())
 }

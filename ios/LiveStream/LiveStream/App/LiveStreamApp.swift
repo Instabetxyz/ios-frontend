@@ -1,19 +1,20 @@
 import SwiftUI
+import DynamicSDKSwift
 
 @main
 struct LiveStreamApp: App {
     @StateObject private var appState = AppState()
 
     init() {
-        // TODO: Initialize Dynamic SDK once added via SPM
-        // let config = DynamicSDKConfiguration(
-        //     environmentId: Constants.dynamicEnvironmentId,
-        //     appName: Constants.appName,
-        //     appLogoUrl: Constants.appLogoUrl,
-        //     redirectUrl: Constants.redirectUrl,
-        //     appOrigin: Constants.appOrigin
-        // )
-        // DynamicSDK.initialize(config: config)
+        _ = DynamicSDK.initialize(
+            props: ClientProps(
+                environmentId: Constants.dynamicEnvironmentId,
+                appLogoUrl: Constants.appLogoUrl,
+                appName: Constants.appName,
+                redirectUrl: Constants.redirectUrl,
+                appOrigin: Constants.appOrigin
+            )
+        )
     }
 
     var body: some Scene {

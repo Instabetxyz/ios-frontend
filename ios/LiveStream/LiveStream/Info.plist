@@ -5,7 +5,7 @@
 	<key>CFBundleDevelopmentRegion</key>
 	<string>$(DEVELOPMENT_LANGUAGE)</string>
 	<key>CFBundleDisplayName</key>
-	<string>LiveStream</string>
+	<string>Arcadia</string>
 	<key>CFBundleExecutable</key>
 	<string>$(EXECUTABLE_NAME)</string>
 	<key>CFBundleIdentifier</key>
@@ -23,16 +23,29 @@
 		<dict>
 			<key>CFBundleTypeRole</key>
 			<string>Editor</string>
+			<key>CFBundleURLName</key>
+			<string>com.ethglobal.cannes2026.arcadia</string>
 			<key>CFBundleURLSchemes</key>
 			<array>
-				<string>livestream</string>
+				<string>arcadia</string>
 			</array>
 		</dict>
 	</array>
 	<key>CFBundleVersion</key>
 	<string>1</string>
+	<key>LSApplicationQueriesSchemes</key>
+	<array>
+		<string>metamask</string>
+		<string>rainbow</string>
+		<string>trust</string>
+		<string>uniswap</string>
+		<string>zerion</string>
+		<string>coinbase</string>
+	</array>
 	<key>NSCameraUsageDescription</key>
 	<string>Camera access is needed to broadcast live streams.</string>
+	<key>NSFaceIDUsageDescription</key>
+	<string>Face ID is used to authenticate your wallet.</string>
 	<key>NSMicrophoneUsageDescription</key>
 	<string>Microphone access is needed to broadcast live audio.</string>
 	<key>UIApplicationSupportsIndirectInputEvents</key>

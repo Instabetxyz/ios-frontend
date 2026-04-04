@@ -1,5 +1,6 @@
 import Foundation
 import Combine
+import DynamicSDKSwift
 
 @MainActor
 class AppState: ObservableObject {
@@ -7,35 +8,35 @@ class AppState: ObservableObject {
     @Published var walletAddress: String?
     @Published var userName: String?
 
-    // TODO: Wire to Dynamic SDK publishers once SDK is linked
-    // Example:
-    //   DynamicSDK.shared.auth.authenticatedUserChanges
-    //     .receive(on: DispatchQueue.main)
-    //     .sink { [weak self] user in
-    //         self?.isAuthenticated = user != nil
-    //         self?.userName = user?.email
-    //     }
-    //     .store(in: &cancellables)
-    //
-    //   DynamicSDK.shared.wallets.userWalletsChanges
-    //     .receive(on: DispatchQueue.main)
-    //     .sink { [weak self] wallets in
-    //         self?.walletAddress = wallets.first(where: { $0.chain == "EVM" })?.address
-    //     }
-    //     .store(in: &cancellables)
+    private var cancellables = Set<AnyCancellable>()
 
-    // DEV ONLY: call this to simulate a successful login while Dynamic SDK isn't wired up
-    func simulateLogin() {
-        isAuthenticated = true
-        walletAddress = "0xd8dA6BF26964aF9D7eEd9e03E53415D37aA96045"
-        userName = "demo@example.com"
+    init() {
+        guard let sdk = try? DynamicSDK.shared else { return }
+
+        sdk.auth.authenticatedUserChanges
+            .receive(on: DispatchQueue.main)
+            .sink { [weak self] user in
+                self?.isAuthenticated = user != nil
+                self?.userName = user?.email
+            }
+            .store(in: &cancellables)
+
+        sdk.wallets.userWalletsChanges
+            .receive(on: DispatchQueue.main)
+            .sink { [weak self] wallets in
+                self?.walletAddress = wallets.first(where: { $0.chain == "EVM" })?.address
+                WalletService.shared.address = self?.walletAddress
+                WalletService.shared.onWalletsUpdated()
+            }
+            .store(in: &cancellables)
     }
 
-    func logout() {
-        isAuthenticated = false
-        walletAddress = nil
-        userName = nil
-        // TODO: DynamicSDK.shared.auth.logout()
+    func logout() async {
+        do {
+            try await DynamicSDK.shared?.auth.logout()
+        } catch {
+            print("Logout failed: \(error)")
+        }
     }
 
     var shortAddress: String? {

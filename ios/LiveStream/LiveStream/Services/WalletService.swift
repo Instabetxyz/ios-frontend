@@ -62,6 +62,6 @@ class WalletService: ObservableObject {
             wei = wei * 16 + Double(digit)
         }
         let og = wei / 1e18
-        return String(format: "%.4f OG", og)
+        return String(format: "%.1f OG", og)
     }
 }

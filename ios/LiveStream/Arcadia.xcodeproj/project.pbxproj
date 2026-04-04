@@ -3,7 +3,7 @@
 	archiveVersion = 1;
 	classes = {
 	};
-	objectVersion = 77;
+	objectVersion = 63;
 	objects = {
 
 /* Begin PBXBuildFile section */
@@ -15,6 +15,15 @@
 		4D0588AF46C87A9F792CDBC7 /* StreamBetClient.swift in Sources */ = {isa = PBXBuildFile; fileRef = C0A8C6130B38B27A580A1F79 /* StreamBetClient.swift */; };
 		57AF0C4EC952CE2F75E5F002 /* BroadcastView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7AF97667C90CDF0F1A4CAC1D /* BroadcastView.swift */; };
 		5808CAFC448EAE5A353B4C04 /* Market.swift in Sources */ = {isa = PBXBuildFile; fileRef = 56D0B7FCFE623C9A4D8A8409 /* Market.swift */; };
+		5C3CBCF52F81A3690075D2B2 /* AnyCodableSwift.xcframework in Frameworks */ = {isa = PBXBuildFile; fileRef = 5C3CBCF02F81A3510075D2B2 /* AnyCodableSwift.xcframework */; };
+		5C3CBCF62F81A3690075D2B2 /* AnyCodableSwift.xcframework in Embed Frameworks */ = {isa = PBXBuildFile; fileRef = 5C3CBCF02F81A3510075D2B2 /* AnyCodableSwift.xcframework */; settings = {ATTRIBUTES = (CodeSignOnCopy, RemoveHeadersOnCopy, ); }; };
+		5C3CBCF72F81A3690075D2B2 /* DynamicSDKSwift.xcframework in Frameworks */ = {isa = PBXBuildFile; fileRef = 5C3CBCF12F81A3510075D2B2 /* DynamicSDKSwift.xcframework */; };
+		5C3CBCF82F81A3690075D2B2 /* DynamicSDKSwift.xcframework in Embed Frameworks */ = {isa = PBXBuildFile; fileRef = 5C3CBCF12F81A3510075D2B2 /* DynamicSDKSwift.xcframework */; settings = {ATTRIBUTES = (CodeSignOnCopy, RemoveHeadersOnCopy, ); }; };
+		5C3CBCF92F81A3690075D2B2 /* SolanaWeb3.xcframework in Frameworks */ = {isa = PBXBuildFile; fileRef = 5C3CBCF22F81A3510075D2B2 /* SolanaWeb3.xcframework */; };
+		5C3CBCFA2F81A3690075D2B2 /* SolanaWeb3.xcframework in Embed Frameworks */ = {isa = PBXBuildFile; fileRef = 5C3CBCF22F81A3510075D2B2 /* SolanaWeb3.xcframework */; settings = {ATTRIBUTES = (CodeSignOnCopy, RemoveHeadersOnCopy, ); }; };
+		5C3CBCFB2F81A3690075D2B2 /* SwiftBigInt.xcframework in Frameworks */ = {isa = PBXBuildFile; fileRef = 5C3CBCF32F81A3510075D2B2 /* SwiftBigInt.xcframework */; };
+		5C3CBCFC2F81A3690075D2B2 /* SwiftBigInt.xcframework in Embed Frameworks */ = {isa = PBXBuildFile; fileRef = 5C3CBCF32F81A3510075D2B2 /* SwiftBigInt.xcframework */; settings = {ATTRIBUTES = (CodeSignOnCopy, RemoveHeadersOnCopy, ); }; };
+		5C3CBCFF2F81A3750075D2B2 /* AnyCodableSwift.xcframework in Frameworks */ = {isa = PBXBuildFile; fileRef = 5C3CBCF02F81A3510075D2B2 /* AnyCodableSwift.xcframework */; };
 		628E7364ECDE825B7B27E79C /* HomeView.swift in Sources */ = {isa = PBXBuildFile; fileRef = D166AA57D7D013ED87228D53 /* HomeView.swift */; };
 		66B437575C266A90CB3348BB /* WalletService.swift in Sources */ = {isa = PBXBuildFile; fileRef = C4DD6CF13A0F23FAEDC5FABB /* WalletService.swift */; };
 		67399A7EE503AB3F4D745570 /* StreamPlayerView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 54311B89D36F86652F54E59F /* StreamPlayerView.swift */; };
@@ -31,6 +40,23 @@
 		FC78B438729921ABA4ED25D2 /* Constants.swift in Sources */ = {isa = PBXBuildFile; fileRef = 31E00EAF188205B78F49E435 /* Constants.swift */; };
 /* End PBXBuildFile section */
 
+/* Begin PBXCopyFilesBuildPhase section */
+		5C3CBCFE2F81A3690075D2B2 /* Embed Frameworks */ = {
+			isa = PBXCopyFilesBuildPhase;
+			buildActionMask = 2147483647;
+			dstPath = "";
+			dstSubfolderSpec = 10;
+			files = (
+				5C3CBCFC2F81A3690075D2B2 /* SwiftBigInt.xcframework in Embed Frameworks */,
+				5C3CBCF82F81A3690075D2B2 /* DynamicSDKSwift.xcframework in Embed Frameworks */,
+				5C3CBCF62F81A3690075D2B2 /* AnyCodableSwift.xcframework in Embed Frameworks */,
+				5C3CBCFA2F81A3690075D2B2 /* SolanaWeb3.xcframework in Embed Frameworks */,
+			);
+			name = "Embed Frameworks";
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXCopyFilesBuildPhase section */
+
 /* Begin PBXFileReference section */
 		0077A8529502728706B205D8 /* RootView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RootView.swift; sourceTree = "<group>"; };
 		192F00DF7DDA4F711F5AE1CE /* StreamBetWebSocket.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = StreamBetWebSocket.swift; sourceTree = "<group>"; };
@@ -39,6 +65,10 @@
 		4FE745D26EA145856177259A /* Stream.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Stream.swift; sourceTree = "<group>"; };
 		54311B89D36F86652F54E59F /* StreamPlayerView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = StreamPlayerView.swift; sourceTree = "<group>"; };
 		56D0B7FCFE623C9A4D8A8409 /* Market.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Market.swift; sourceTree = "<group>"; };
+		5C3CBCF02F81A3510075D2B2 /* AnyCodableSwift.xcframework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.xcframework; path = AnyCodableSwift.xcframework; sourceTree = "<group>"; };
+		5C3CBCF12F81A3510075D2B2 /* DynamicSDKSwift.xcframework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.xcframework; path = DynamicSDKSwift.xcframework; sourceTree = "<group>"; };
+		5C3CBCF22F81A3510075D2B2 /* SolanaWeb3.xcframework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.xcframework; path = SolanaWeb3.xcframework; sourceTree = "<group>"; };
+		5C3CBCF32F81A3510075D2B2 /* SwiftBigInt.xcframework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.xcframework; path = SwiftBigInt.xcframework; sourceTree = "<group>"; };
 		5F2CA85BFA68DB9151B206D4 /* LiveStreamApp.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LiveStreamApp.swift; sourceTree = "<group>"; };
 		63C6660FEFAB842A03398466 /* ProfileView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ProfileView.swift; sourceTree = "<group>"; };
 		65296A0FE2D133254E4CE51D /* APIClient.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = APIClient.swift; sourceTree = "<group>"; };
@@ -49,7 +79,7 @@
 		A36B9D073A0D39312472E36D /* HLSBroadcastService.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HLSBroadcastService.swift; sourceTree = "<group>"; };
 		A98F760CBDB2524C4E47CC7F /* StreamFeedView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = StreamFeedView.swift; sourceTree = "<group>"; };
 		AB9E6B957F893C78C315D5D5 /* AppState.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppState.swift; sourceTree = "<group>"; };
-		BD47DCC560FF89CEB5397D1B /* Arcadia.app */ = {isa = PBXFileReference; includeInIndex = 0; lastKnownFileType = wrapper.application; path = Arcadia.app; sourceTree = BUILT_PRODUCTS_DIR; };
+		BD47DCC560FF89CEB5397D1B /* Arcadia.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = Arcadia.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		C0A8C6130B38B27A580A1F79 /* StreamBetClient.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = StreamBetClient.swift; sourceTree = "<group>"; };
 		C4DD6CF13A0F23FAEDC5FABB /* WalletService.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WalletService.swift; sourceTree = "<group>"; };
 		D0E44B5CCD61F3F617E1860E /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist; path = Info.plist; sourceTree = "<group>"; };
@@ -57,6 +87,21 @@
 		D520B37BC42F6C34BA3A8BC9 /* AuthView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AuthView.swift; sourceTree = "<group>"; };
 		D6ADE99C572EC29845CA9C9B /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 /* End PBXFileReference section */
+
+/* Begin PBXFrameworksBuildPhase section */
+		5C3CBCFD2F81A3690075D2B2 /* Frameworks */ = {
+			isa = PBXFrameworksBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				5C3CBCFB2F81A3690075D2B2 /* SwiftBigInt.xcframework in Frameworks */,
+				5C3CBCFF2F81A3750075D2B2 /* AnyCodableSwift.xcframework in Frameworks */,
+				5C3CBCF72F81A3690075D2B2 /* DynamicSDKSwift.xcframework in Frameworks */,
+				5C3CBCF52F81A3690075D2B2 /* AnyCodableSwift.xcframework in Frameworks */,
+				5C3CBCF92F81A3690075D2B2 /* SolanaWeb3.xcframework in Frameworks */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
 		180E0246ADDB6640ECC285BD /* Products */ = {
@@ -98,6 +143,17 @@
 			path = Markets;
 			sourceTree = "<group>";
 		};
+		5C3CBCF42F81A3510075D2B2 /* Frameworks */ = {
+			isa = PBXGroup;
+			children = (
+				5C3CBCF02F81A3510075D2B2 /* AnyCodableSwift.xcframework */,
+				5C3CBCF12F81A3510075D2B2 /* DynamicSDKSwift.xcframework */,
+				5C3CBCF22F81A3510075D2B2 /* SolanaWeb3.xcframework */,
+				5C3CBCF32F81A3510075D2B2 /* SwiftBigInt.xcframework */,
+			);
+			path = Frameworks;
+			sourceTree = "<group>";
+		};
 		6944F7992A1E820004AE0D71 /* Stream */ = {
 			isa = PBXGroup;
 			children = (
@@ -124,6 +180,7 @@
 		8D39AA40B4B75BA4AF59B5AF = {
 			isa = PBXGroup;
 			children = (
+				5C3CBCF42F81A3510075D2B2 /* Frameworks */,
 				19A598F84F8F37DD4154983D /* LiveStream */,
 				180E0246ADDB6640ECC285BD /* Products */,
 			);
@@ -202,6 +259,8 @@
 			buildPhases = (
 				5FD8146F6B83845EF56F215A /* Sources */,
 				92C03E5335518129F9BA3F4F /* Resources */,
+				5C3CBCFD2F81A3690075D2B2 /* Frameworks */,
+				5C3CBCFE2F81A3690075D2B2 /* Embed Frameworks */,
 			);
 			buildRules = (
 			);
@@ -209,6 +268,8 @@
 			);
 			name = Arcadia;
 			packageProductDependencies = (
+				5C3CBCED2F81A2560075D2B2 /* DynamicSDKSwift */,
+				5C3CBCEF2F81A2B10075D2B2 /* DynamicSDKSwift */,
 			);
 			productName = Arcadia;
 			productReference = BD47DCC560FF89CEB5397D1B /* Arcadia.app */;
@@ -222,11 +283,6 @@
 			attributes = {
 				BuildIndependentTargetsInParallel = YES;
 				LastUpgradeCheck = 1500;
-				TargetAttributes = {
-					4CE5371533A03B052A8B8308 = {
-						DevelopmentTeam = "";
-					};
-				};
 			};
 			buildConfigurationList = 392F20B236A3392EA13E0A0E /* Build configuration list for PBXProject "Arcadia" */;
 			compatibilityVersion = "Xcode 14.0";
@@ -238,7 +294,8 @@
 			);
 			mainGroup = 8D39AA40B4B75BA4AF59B5AF;
 			minimizedProjectReferenceProxies = 1;
-			preferredProjectObjectVersion = 77;
+			packageReferences = (
+			);
 			projectDirPath = "";
 			projectRoot = "";
 			targets = (
@@ -358,7 +415,7 @@
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				CODE_SIGN_IDENTITY = "iPhone Developer";
-				DEVELOPMENT_TEAM = "";
+				DEVELOPMENT_TEAM = TS4RX6E9KD;
 				INFOPLIST_FILE = LiveStream/Info.plist;
 				IPHONEOS_DEPLOYMENT_TARGET = 17.0;
 				LD_RUNPATH_SEARCH_PATHS = (
@@ -433,7 +490,7 @@
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				CODE_SIGN_IDENTITY = "iPhone Developer";
-				DEVELOPMENT_TEAM = "";
+				DEVELOPMENT_TEAM = TS4RX6E9KD;
 				INFOPLIST_FILE = LiveStream/Info.plist;
 				IPHONEOS_DEPLOYMENT_TARGET = 17.0;
 				LD_RUNPATH_SEARCH_PATHS = (
@@ -469,6 +526,17 @@
 			defaultConfigurationName = Debug;
 		};
 /* End XCConfigurationList section */
+
+/* Begin XCSwiftPackageProductDependency section */
+		5C3CBCED2F81A2560075D2B2 /* DynamicSDKSwift */ = {
+			isa = XCSwiftPackageProductDependency;
+			productName = DynamicSDKSwift;
+		};
+		5C3CBCEF2F81A2B10075D2B2 /* DynamicSDKSwift */ = {
+			isa = XCSwiftPackageProductDependency;
+			productName = DynamicSDKSwift;
+		};
+/* End XCSwiftPackageProductDependency section */
 	};
 	rootObject = 4B7847D49C6A0D12349EA15D /* Project object */;
 }

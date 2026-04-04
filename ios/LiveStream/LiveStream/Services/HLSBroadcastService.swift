@@ -17,6 +17,9 @@ class HLSBroadcastService: NSObject, ObservableObject {
     private var audioInput: AVAssetWriterInput?
     private var captureVideoInput: AVCaptureDeviceInput?
     private var captureAudioInput: AVCaptureDeviceInput?
+    private var videoDataOutput: AVCaptureVideoDataOutput?
+    private var audioDataOutput: AVCaptureAudioDataOutput?
+    private let captureQueue = DispatchQueue(label: "com.arcadia.capture", qos: .userInitiated)
 
     private var streamId: String?
     private var segmentTimer: Timer?
@@ -24,6 +27,7 @@ class HLSBroadcastService: NSObject, ObservableObject {
     private var currentSegmentIndex = 0
     private var currentSegmentUrl: URL?
     private var isWritingSegment = false
+    private var sessionStarted = false
 
     private let segmentDuration: TimeInterval = 3.0
     private let maxDuration: TimeInterval = 60.0
@@ -34,9 +38,9 @@ class HLSBroadcastService: NSObject, ObservableObject {
         session.beginConfiguration()
         session.sessionPreset = .high
 
-        // Video input
-        guard let videoDevice = AVCaptureDevice.default(.builtInWideAngleCamera, for: .video, position: .front)
-                ?? AVCaptureDevice.default(.builtInWideAngleCamera, for: .video, position: .back) else {
+        // Video input — prefer back camera
+        guard let videoDevice = AVCaptureDevice.default(.builtInWideAngleCamera, for: .video, position: .back)
+                ?? AVCaptureDevice.default(.builtInWideAngleCamera, for: .video, position: .front) else {
             throw BroadcastError.noCameraAvailable
         }
         let videoIn = try AVCaptureDeviceInput(device: videoDevice)
@@ -49,6 +53,20 @@ class HLSBroadcastService: NSObject, ObservableObject {
             if session.canAddInput(audioIn) { session.addInput(audioIn) }
             captureAudioInput = audioIn
         }
+
+        // Video data output — feeds sample buffers to AVAssetWriter
+        let vOut = AVCaptureVideoDataOutput()
+        vOut.videoSettings = [kCVPixelBufferPixelFormatTypeKey as String: kCVPixelFormatType_420YpCbCr8BiPlanarVideoRange]
+        vOut.alwaysDiscardsLateVideoFrames = true
+        vOut.setSampleBufferDelegate(self, queue: captureQueue)
+        if session.canAddOutput(vOut) { session.addOutput(vOut) }
+        videoDataOutput = vOut
+
+        // Audio data output
+        let aOut = AVCaptureAudioDataOutput()
+        aOut.setSampleBufferDelegate(self, queue: captureQueue)
+        if session.canAddOutput(aOut) { session.addOutput(aOut) }
+        audioDataOutput = aOut
 
         session.commitConfiguration()
     }
@@ -137,8 +155,9 @@ class HLSBroadcastService: NSObject, ObservableObject {
         audioInput = aInput
 
         writer.startWriting()
-        writer.startSession(atSourceTime: .zero)
-        isWritingSegment = true
+        // startSession is called on the first sample buffer so the timestamp is accurate
+        isWritingSegment = false
+        sessionStarted = false
     }
 
     private func rotateSegment() {
@@ -177,6 +196,7 @@ class HLSBroadcastService: NSObject, ObservableObject {
         videoInput = nil
         audioInput = nil
         isWritingSegment = false
+        sessionStarted = false
     }
 
     private func finalizeCurrentSegment() async {
@@ -194,7 +214,18 @@ class HLSBroadcastService: NSObject, ObservableObject {
     // MARK: - AVCaptureVideoDataOutputSampleBufferDelegate support
 
     func appendSampleBuffer(_ sampleBuffer: CMSampleBuffer, ofType type: AVMediaType) {
-        guard isWritingSegment, let writer = assetWriter, writer.status == .writing else { return }
+        guard let writer = assetWriter, writer.status == .writing else { return }
+
+        // Start the asset writer session on the first sample buffer's presentation time
+        if !sessionStarted {
+            let pts = CMSampleBufferGetPresentationTimeStamp(sampleBuffer)
+            writer.startSession(atSourceTime: pts)
+            sessionStarted = true
+            isWritingSegment = true
+        }
+
+        guard isWritingSegment else { return }
+
         if type == .video, let input = videoInput, input.isReadyForMoreMediaData {
             input.append(sampleBuffer)
         } else if type == .audio, let input = audioInput, input.isReadyForMoreMediaData {

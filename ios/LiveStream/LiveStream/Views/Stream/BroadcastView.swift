@@ -4,6 +4,7 @@ import AVFoundation
 struct BroadcastView: View {
     @EnvironmentObject var appState: AppState
     @StateObject private var broadcaster = HLSBroadcastService.shared
+    @StateObject private var machinefi = MachineFiService.shared
     @State private var streamTitle = ""
     @State private var isStartingStream = false
     @State private var currentStreamId: String?
@@ -14,6 +15,7 @@ struct BroadcastView: View {
     @State private var marketCondition = ""
     @State private var isCreatingMarket = false
     @State private var createdMarketId: String?
+    @State private var verifyCondition = "Is there a person visible in the frame?"
 
     var body: some View {
         NavigationStack {
@@ -113,31 +115,37 @@ struct BroadcastView: View {
 
                 Spacer()
 
-                HStack {
-                    VStack(alignment: .leading, spacing: 4) {
-                        Text(streamTitle)
-                            .font(.headline)
-                            .foregroundStyle(.white)
-                        Text(appState.shortAddress ?? "")
-                            .font(.caption)
-                            .foregroundStyle(.white.opacity(0.7))
-                            .fontDesign(.monospaced)
+                VStack(spacing: 8) {
+                    // Stream info + end button
+                    HStack {
+                        VStack(alignment: .leading, spacing: 4) {
+                            Text(streamTitle)
+                                .font(.headline)
+                                .foregroundStyle(.white)
+                            Text(appState.shortAddress ?? "")
+                                .font(.caption)
+                                .foregroundStyle(.white.opacity(0.7))
+                                .fontDesign(.monospaced)
+                        }
+                        Spacer()
+                        Button {
+                            showEndConfirm = true
+                        } label: {
+                            Text("End")
+                                .fontWeight(.semibold)
+                                .padding(.horizontal, 20)
+                                .padding(.vertical, 10)
+                                .background(.red)
+                                .foregroundStyle(.white)
+                                .clipShape(Capsule())
+                        }
                     }
-                    Spacer()
-                    Button {
-                        showEndConfirm = true
-                    } label: {
-                        Text("End")
-                            .fontWeight(.semibold)
-                            .padding(.horizontal, 20)
-                            .padding(.vertical, 10)
-                            .background(.red)
-                            .foregroundStyle(.white)
-                            .clipShape(Capsule())
-                    }
+
+                    // MachineFi verification panel
+                    machineFiPanel
                 }
                 .padding()
-                .background(.black.opacity(0.4))
+                .background(.black.opacity(0.6))
             }
         }
         .confirmationDialog("End live stream?", isPresented: $showEndConfirm, titleVisibility: .visible) {
@@ -146,6 +154,54 @@ struct BroadcastView: View {
             }
             Button("Keep Streaming", role: .cancel) {}
         }
+    }
+
+    private var machineFiPanel: some View {
+        VStack(alignment: .leading, spacing: 6) {
+            HStack {
+                Text("MachineFi Verify")
+                    .font(.caption)
+                    .fontWeight(.semibold)
+                    .foregroundStyle(.white.opacity(0.8))
+                Spacer()
+                Button {
+                    guard let sid = currentStreamId else { return }
+                    Task { await machinefi.checkStream(streamId: sid, condition: verifyCondition) }
+                } label: {
+                    if machinefi.isChecking {
+                        ProgressView().tint(.white).scaleEffect(0.7)
+                    } else {
+                        Text("Check")
+                            .font(.caption)
+                            .fontWeight(.semibold)
+                            .padding(.horizontal, 12)
+                            .padding(.vertical, 5)
+                            .background(Color.purple)
+                            .foregroundStyle(.white)
+                            .clipShape(Capsule())
+                    }
+                }
+                .disabled(machinefi.isChecking || currentStreamId == nil)
+            }
+
+            if let result = machinefi.lastResult {
+                HStack(alignment: .top, spacing: 6) {
+                    Image(systemName: result.triggered ? "checkmark.circle.fill" : "xmark.circle.fill")
+                        .foregroundStyle(result.triggered ? .green : .red)
+                        .font(.caption)
+                    Text(result.explanation)
+                        .font(.caption2)
+                        .foregroundStyle(.white.opacity(0.9))
+                        .lineLimit(3)
+                }
+            } else if let err = machinefi.errorMessage {
+                Text(err)
+                    .font(.caption2)
+                    .foregroundStyle(.red.opacity(0.8))
+                    .lineLimit(2)
+            }
+        }
+        .padding(.top, 4)
     }
 
     private var liveBadge: some View {

@@ -18,7 +18,7 @@ struct EndStreamResponse: Codable {
 class APIClient: ObservableObject {
     static let shared = APIClient()
 
-    private let useMocks = true
+    private let useMocks = false
     private let baseUrl = Constants.backendBaseUrl
 
     // MARK: - Stream lifecycle

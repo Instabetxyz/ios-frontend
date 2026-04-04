@@ -2,7 +2,7 @@ import SwiftUI
 import DynamicSDKSwift
 
 @main
-struct LiveStreamApp: App {
+struct ArcadiaApp: App {
     @StateObject private var appState = AppState()
 
     init() {
@@ -25,22 +25,28 @@ struct LiveStreamApp: App {
             vanityName: "0G Galileo"
         )
 
-        _ = DynamicSDK.initialize(
-            props: ClientProps(
-                environmentId: Constants.dynamicEnvironmentId,
-                appLogoUrl: Constants.appLogoUrl,
-                appName: Constants.appName,
-                redirectUrl: Constants.redirectUrl,
-                appOrigin: Constants.appOrigin,
-                evmNetworks: [galileo]
+        do {
+            _ = try DynamicSDK.initialize(
+                props: ClientProps(
+                    environmentId: Constants.dynamicEnvironmentId,
+                    appLogoUrl: Constants.appLogoUrl,
+                    appName: Constants.appName,
+                    redirectUrl: Constants.redirectUrl,
+                    appOrigin: Constants.appOrigin,
+                    evmNetworks: [galileo]
+                )
             )
-        )
+            print("✅ DynamicSDK initialized successfully")
+        } catch {
+            print("❌ Failed to initialize DynamicSDK: \(error)")
+        }
     }
 
     var body: some Scene {
         WindowGroup {
             RootView()
                 .environmentObject(appState)
+                .preferredColorScheme(.dark)
         }
     }
 }

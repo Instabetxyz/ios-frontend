@@ -1,0 +1,688 @@
+// !$*UTF8*$!
+{
+	archiveVersion = 1;
+	classes = {
+	};
+	objectVersion = 56;
+	objects = {
+
+/* Begin PBXBuildFile section */
+		069898F3595F822E90304493 /* AppRootView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 01DAD545716C3952260F8AC2 /* AppRootView.swift */; };
+		22D16B387EE61062CA2E9523 /* Route.swift in Sources */ = {isa = PBXBuildFile; fileRef = 19DA03555BA55B97B5C0B2BD /* Route.swift */; };
+		25206D5C2F3B3A5D007740AA /* DelegationScreen.swift in Sources */ = {isa = PBXBuildFile; fileRef = 25206D5B2F3B3A5D007740AA /* DelegationScreen.swift */; };
+		25AFB8C32EFEEDB30013666D /* DynamicSDKExampleApp.swift in Sources */ = {isa = PBXBuildFile; fileRef = 25AFB8C22EFEEDB30013666D /* DynamicSDKExampleApp.swift */; };
+		25AFB8CB2F0000020013666E /* MfaDevicesScreen.swift in Sources */ = {isa = PBXBuildFile; fileRef = 25AFB8C62F0000020013666E /* MfaDevicesScreen.swift */; };
+		25AFB8CC2F0000020013666E /* MfaAddDeviceScreen.swift in Sources */ = {isa = PBXBuildFile; fileRef = 25AFB8C72F0000020013666E /* MfaAddDeviceScreen.swift */; };
+		25AFB8CD2F0000020013666E /* MfaRecoveryCodesScreen.swift in Sources */ = {isa = PBXBuildFile; fileRef = 25AFB8C82F0000020013666E /* MfaRecoveryCodesScreen.swift */; };
+		25AFB8CE2F0000020013666E /* PasskeysScreen.swift in Sources */ = {isa = PBXBuildFile; fileRef = 25AFB8C92F0000020013666E /* PasskeysScreen.swift */; };
+		25AFB8CF2F0000020013666E /* DynamicSDKExample/Components/SecurityComponents.swift in Sources */ = {isa = PBXBuildFile; fileRef = 25AFB8CA2F0000020013666E /* DynamicSDKExample/Components/SecurityComponents.swift */; };
+		2B307B30551580BE806D398B /* WalletDetailsViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 279E20DCE7D3D453D72016B4 /* WalletDetailsViewModel.swift */; };
+		2F7B0B6E9B0F4D3D9F7D0C41 /* SwitchNetworkViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2F7B0B6D9B0F4D3D9F7D0C41 /* SwitchNetworkViewModel.swift */; };
+		404BC9C5B3FEEFF1D1A21C15 /* SwitchNetworkScreen.swift in Sources */ = {isa = PBXBuildFile; fileRef = 31588B8A6C4C6AA4D2E86E36 /* SwitchNetworkScreen.swift */; };
+		45D32B68DEAED49BBC8AC812 /* EvmSendErc20Screen.swift in Sources */ = {isa = PBXBuildFile; fileRef = 41874C723A6DE7A70EE54055 /* EvmSendErc20Screen.swift */; };
+		4CE62D012682B8019FA5004B /* HomeScreenViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4AB21CB71A347F6991D4ED28 /* HomeScreenViewModel.swift */; };
+		547499A0086DA622DD2132C0 /* DynamicSDKExample/Components/ValueCard.swift in Sources */ = {isa = PBXBuildFile; fileRef = 503886089E26496E302940DC /* DynamicSDKExample/Components/ValueCard.swift */; };
+		5C3CBCEB2F81A0CC0075D2B2 /* DynamicSDKSwift in Frameworks */ = {isa = PBXBuildFile; productRef = 5C3CBCEA2F81A0CC0075D2B2 /* DynamicSDKSwift */; };
+		6F99C6888B6E9C6FFDB06364 /* DynamicSDKExample/Components/WalletCard.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5EF61F281A294CF554BA4BFF /* DynamicSDKExample/Components/WalletCard.swift */; };
+		9B2C9C7A2B00000100000001 /* (null) in Sources */ = {isa = PBXBuildFile; };
+		9B2C9C802B00000100000002 /* SplashScreen.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9B2C9C7F2B00000100000002 /* SplashScreen.swift */; };
+		9B2C9C812B00000100000003 /* LoginScreen.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9B2C9C7F2B00000100000003 /* LoginScreen.swift */; };
+		9B2C9C822B00000100000004 /* HomeScreen.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9B2C9C7F2B00000100000004 /* HomeScreen.swift */; };
+		9B2C9C832B00000100000014 /* DynamicSDKExample/Components/SharedComponents.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9B2C9C7F2B00000100000014 /* DynamicSDKExample/Components/SharedComponents.swift */; };
+		9B2C9C842B00000100000006 /* WalletDetailsScreen.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9B2C9C7F2B00000100000006 /* WalletDetailsScreen.swift */; };
+		9B2C9C852B00000100000007 /* SignMessageScreen.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9B2C9C7F2B00000100000007 /* SignMessageScreen.swift */; };
+		9B2C9C862B00000100000008 /* SolanaSignMessageScreen.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9B2C9C7F2B00000100000008 /* SolanaSignMessageScreen.swift */; };
+		9B2C9C872B00000100000009 /* SolanaSendTransactionScreen.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9B2C9C7F2B00000100000009 /* SolanaSendTransactionScreen.swift */; };
+		9B2C9C882B00000100000010 /* EvmSignTransactionScreen.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9B2C9C7F2B00000100000010 /* EvmSignTransactionScreen.swift */; };
+		9B2C9C892B00000100000011 /* EvmSignTypedDataScreen.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9B2C9C7F2B00000100000011 /* EvmSignTypedDataScreen.swift */; };
+		9B2C9C8A2B00000100000012 /* EvmSendTransactionScreen.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9B2C9C7F2B00000100000012 /* EvmSendTransactionScreen.swift */; };
+		9B2C9C8B2B00000100000013 /* EvmWriteContractScreen.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9B2C9C7F2B00000100000013 /* EvmWriteContractScreen.swift */; };
+		9B2C9C8C2B00000100000015 /* SolanaSignTransactionScreen.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9B2C9C7F2B00000100000015 /* SolanaSignTransactionScreen.swift */; };
+		9D6461CCD5A67CAB7D5799A4 /* LoginScreenViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = B7E1979B236B11315ADF20DA /* LoginScreenViewModel.swift */; };
+		BBF6EE2C54F3261916A52BD5 /* SplashScreenViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = BA35598A278FA06EBE84A0A8 /* SplashScreenViewModel.swift */; };
+		CUST0001000000000001 /* CustomBalanceScreen.swift in Sources */ = {isa = PBXBuildFile; fileRef = CUST0002000000000001 /* CustomBalanceScreen.swift */; };
+		CUST0001000000000002 /* CustomBalanceViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = CUST0002000000000002 /* CustomBalanceViewModel.swift */; };
+		PRJS0001000000000001 /* ProjectSettingsScreen.swift in Sources */ = {isa = PBXBuildFile; fileRef = PRJS0002000000000001 /* ProjectSettingsScreen.swift */; };
+		SPLT0001000000000001 /* SolanaSendSplTokenScreen.swift in Sources */ = {isa = PBXBuildFile; fileRef = SPLT0002000000000001 /* SolanaSendSplTokenScreen.swift */; };
+		STUP0001000000000001 /* StepUpAuthScreen.swift in Sources */ = {isa = PBXBuildFile; fileRef = STUP0002000000000001 /* StepUpAuthScreen.swift */; };
+		SUI00001000000000001 /* SuiSignMessageScreen.swift in Sources */ = {isa = PBXBuildFile; fileRef = SUI00002000000000001 /* SuiSignMessageScreen.swift */; };
+		SUI00001000000000002 /* SuiSignTransactionScreen.swift in Sources */ = {isa = PBXBuildFile; fileRef = SUI00002000000000002 /* SuiSignTransactionScreen.swift */; };
+		SUI00001000000000003 /* SuiSendTransactionScreen.swift in Sources */ = {isa = PBXBuildFile; fileRef = SUI00002000000000003 /* SuiSendTransactionScreen.swift */; };
+		TDEV0001000000000001 /* TrustedDevicesScreen.swift in Sources */ = {isa = PBXBuildFile; fileRef = TDEV0002000000000001 /* TrustedDevicesScreen.swift */; };
+		WC000001000000000001 /* WalletConnectScreen.swift in Sources */ = {isa = PBXBuildFile; fileRef = WC000002000000000001 /* WalletConnectScreen.swift */; };
+		WC000001000000000002 /* WcGlobalListener.swift in Sources */ = {isa = PBXBuildFile; fileRef = WC000002000000000002 /* WcGlobalListener.swift */; };
+		WC000001000000000003 /* QrScannerView.swift in Sources */ = {isa = PBXBuildFile; fileRef = WC000002000000000003 /* QrScannerView.swift */; };
+/* End PBXBuildFile section */
+
+/* Begin PBXCopyFilesBuildPhase section */
+		251444B32F1ABDCC00BED54E /* Embed Frameworks */ = {
+			isa = PBXCopyFilesBuildPhase;
+			buildActionMask = 2147483647;
+			dstPath = "";
+			dstSubfolderSpec = 10;
+			files = (
+			);
+			name = "Embed Frameworks";
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXCopyFilesBuildPhase section */
+
+/* Begin PBXFileReference section */
+		01DAD545716C3952260F8AC2 /* AppRootView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppRootView.swift; sourceTree = "<group>"; };
+		19DA03555BA55B97B5C0B2BD /* Route.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Route.swift; sourceTree = "<group>"; };
+		25206D5B2F3B3A5D007740AA /* DelegationScreen.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DelegationScreen.swift; sourceTree = "<group>"; };
+		25AFB8C22EFEEDB30013666D /* DynamicSDKExampleApp.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DynamicSDKExampleApp.swift; sourceTree = "<group>"; };
+		25AFB8C62F0000020013666E /* MfaDevicesScreen.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MfaDevicesScreen.swift; sourceTree = "<group>"; };
+		25AFB8C72F0000020013666E /* MfaAddDeviceScreen.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MfaAddDeviceScreen.swift; sourceTree = "<group>"; };
+		25AFB8C82F0000020013666E /* MfaRecoveryCodesScreen.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MfaRecoveryCodesScreen.swift; sourceTree = "<group>"; };
+		25AFB8C92F0000020013666E /* PasskeysScreen.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PasskeysScreen.swift; sourceTree = "<group>"; };
+		25AFB8CA2F0000020013666E /* DynamicSDKExample/Components/SecurityComponents.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DynamicSDKExample/Components/SecurityComponents.swift; sourceTree = "<group>"; };
+		25AFB8D02F1000000013666F /* DynamicSDKExample.entitlements */ = {isa = PBXFileReference; lastKnownFileType = text.plist.entitlements; path = DynamicSDKExample.entitlements; sourceTree = "<group>"; };
+		279E20DCE7D3D453D72016B4 /* WalletDetailsViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WalletDetailsViewModel.swift; sourceTree = "<group>"; };
+		2F7B0B6D9B0F4D3D9F7D0C41 /* SwitchNetworkViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SwitchNetworkViewModel.swift; sourceTree = "<group>"; };
+		31588B8A6C4C6AA4D2E86E36 /* SwitchNetworkScreen.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SwitchNetworkScreen.swift; sourceTree = "<group>"; };
+		41874C723A6DE7A70EE54055 /* EvmSendErc20Screen.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EvmSendErc20Screen.swift; sourceTree = "<group>"; };
+		4AB21CB71A347F6991D4ED28 /* HomeScreenViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HomeScreenViewModel.swift; sourceTree = "<group>"; };
+		503886089E26496E302940DC /* DynamicSDKExample/Components/ValueCard.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DynamicSDKExample/Components/ValueCard.swift; sourceTree = "<group>"; };
+		5C3CBCAD2F81A0B80075D2B2 /* AppRootView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppRootView.swift; sourceTree = "<group>"; };
+		5C3CBCAE2F81A0B80075D2B2 /* Route.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Route.swift; sourceTree = "<group>"; };
+		5C3CBCB02F81A0B80075D2B2 /* SecurityComponents.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SecurityComponents.swift; sourceTree = "<group>"; };
+		5C3CBCB12F81A0B80075D2B2 /* SharedComponents.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SharedComponents.swift; sourceTree = "<group>"; };
+		5C3CBCB22F81A0B80075D2B2 /* ValueCard.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ValueCard.swift; sourceTree = "<group>"; };
+		5C3CBCB32F81A0B80075D2B2 /* WalletCard.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WalletCard.swift; sourceTree = "<group>"; };
+		5C3CBCB52F81A0B80075D2B2 /* CreatePasswordWalletScreen.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CreatePasswordWalletScreen.swift; sourceTree = "<group>"; };
+		5C3CBCB62F81A0B80075D2B2 /* CustomBalanceScreen.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CustomBalanceScreen.swift; sourceTree = "<group>"; };
+		5C3CBCB72F81A0B80075D2B2 /* CustomBalanceViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CustomBalanceViewModel.swift; sourceTree = "<group>"; };
+		5C3CBCB82F81A0B80075D2B2 /* EvmSendErc20Screen.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EvmSendErc20Screen.swift; sourceTree = "<group>"; };
+		5C3CBCB92F81A0B80075D2B2 /* EvmSendTransactionScreen.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EvmSendTransactionScreen.swift; sourceTree = "<group>"; };
+		5C3CBCBA2F81A0B80075D2B2 /* EvmSignTransactionScreen.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EvmSignTransactionScreen.swift; sourceTree = "<group>"; };
+		5C3CBCBB2F81A0B80075D2B2 /* EvmSignTypedDataScreen.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EvmSignTypedDataScreen.swift; sourceTree = "<group>"; };
+		5C3CBCBC2F81A0B80075D2B2 /* EvmWriteContractScreen.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EvmWriteContractScreen.swift; sourceTree = "<group>"; };
+		5C3CBCBD2F81A0B80075D2B2 /* SignMessageScreen.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SignMessageScreen.swift; sourceTree = "<group>"; };
+		5C3CBCBE2F81A0B80075D2B2 /* SolanaSendSplTokenScreen.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SolanaSendSplTokenScreen.swift; sourceTree = "<group>"; };
+		5C3CBCBF2F81A0B80075D2B2 /* SolanaSendTransactionScreen.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SolanaSendTransactionScreen.swift; sourceTree = "<group>"; };
+		5C3CBCC02F81A0B80075D2B2 /* SolanaSignMessageScreen.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SolanaSignMessageScreen.swift; sourceTree = "<group>"; };
+		5C3CBCC12F81A0B80075D2B2 /* SolanaSignTransactionScreen.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SolanaSignTransactionScreen.swift; sourceTree = "<group>"; };
+		5C3CBCC22F81A0B80075D2B2 /* SuiSendTransactionScreen.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SuiSendTransactionScreen.swift; sourceTree = "<group>"; };
+		5C3CBCC32F81A0B80075D2B2 /* SuiSignMessageScreen.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SuiSignMessageScreen.swift; sourceTree = "<group>"; };
+		5C3CBCC42F81A0B80075D2B2 /* SuiSignTransactionScreen.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SuiSignTransactionScreen.swift; sourceTree = "<group>"; };
+		5C3CBCC52F81A0B80075D2B2 /* SwitchNetworkScreen.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SwitchNetworkScreen.swift; sourceTree = "<group>"; };
+		5C3CBCC62F81A0B80075D2B2 /* SwitchNetworkViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SwitchNetworkViewModel.swift; sourceTree = "<group>"; };
+		5C3CBCC72F81A0B80075D2B2 /* WalletDetailsScreen.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WalletDetailsScreen.swift; sourceTree = "<group>"; };
+		5C3CBCC82F81A0B80075D2B2 /* WalletDetailsViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WalletDetailsViewModel.swift; sourceTree = "<group>"; };
+		5C3CBCC92F81A0B80075D2B2 /* WalletPasswordScreen.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WalletPasswordScreen.swift; sourceTree = "<group>"; };
+		5C3CBCCB2F81A0B80075D2B2 /* QrScannerView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = QrScannerView.swift; sourceTree = "<group>"; };
+		5C3CBCCC2F81A0B80075D2B2 /* WalletConnectScreen.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WalletConnectScreen.swift; sourceTree = "<group>"; };
+		5C3CBCCD2F81A0B80075D2B2 /* WcGlobalListener.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WcGlobalListener.swift; sourceTree = "<group>"; };
+		5C3CBCCF2F81A0B80075D2B2 /* CustomBalanceScreen.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CustomBalanceScreen.swift; sourceTree = "<group>"; };
+		5C3CBCD02F81A0B80075D2B2 /* CustomBalanceViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CustomBalanceViewModel.swift; sourceTree = "<group>"; };
+		5C3CBCD12F81A0B80075D2B2 /* DelegationScreen.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DelegationScreen.swift; sourceTree = "<group>"; };
+		5C3CBCD22F81A0B80075D2B2 /* HomeScreen.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HomeScreen.swift; sourceTree = "<group>"; };
+		5C3CBCD32F81A0B80075D2B2 /* HomeScreenViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HomeScreenViewModel.swift; sourceTree = "<group>"; };
+		5C3CBCD42F81A0B80075D2B2 /* LoginScreen.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LoginScreen.swift; sourceTree = "<group>"; };
+		5C3CBCD52F81A0B80075D2B2 /* LoginScreenViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LoginScreenViewModel.swift; sourceTree = "<group>"; };
+		5C3CBCD62F81A0B80075D2B2 /* MfaAddDeviceScreen.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MfaAddDeviceScreen.swift; sourceTree = "<group>"; };
+		5C3CBCD72F81A0B80075D2B2 /* MfaDevicesScreen.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MfaDevicesScreen.swift; sourceTree = "<group>"; };
+		5C3CBCD82F81A0B80075D2B2 /* MfaRecoveryCodesScreen.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MfaRecoveryCodesScreen.swift; sourceTree = "<group>"; };
+		5C3CBCD92F81A0B80075D2B2 /* PasskeysScreen.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PasskeysScreen.swift; sourceTree = "<group>"; };
+		5C3CBCDA2F81A0B80075D2B2 /* ProjectSettingsScreen.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ProjectSettingsScreen.swift; sourceTree = "<group>"; };
+		5C3CBCDB2F81A0B80075D2B2 /* SplashScreen.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SplashScreen.swift; sourceTree = "<group>"; };
+		5C3CBCDC2F81A0B80075D2B2 /* SplashScreenViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SplashScreenViewModel.swift; sourceTree = "<group>"; };
+		5C3CBCDD2F81A0B80075D2B2 /* StepUpAuthScreen.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = StepUpAuthScreen.swift; sourceTree = "<group>"; };
+		5C3CBCDE2F81A0B80075D2B2 /* TrustedDevicesScreen.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TrustedDevicesScreen.swift; sourceTree = "<group>"; };
+		5C3CBCE02F81A0B80075D2B2 /* DynamicSDKExample.entitlements */ = {isa = PBXFileReference; lastKnownFileType = text.plist.entitlements; path = DynamicSDKExample.entitlements; sourceTree = "<group>"; };
+		5C3CBCE12F81A0B80075D2B2 /* DynamicSDKExampleApp.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DynamicSDKExampleApp.swift; sourceTree = "<group>"; };
+		5C3CBCE22F81A0B80075D2B2 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		5C3CBCE42F81A0B80075D2B2 /* DynamicSDKExample.xcodeproj */ = {isa = PBXFileReference; lastKnownFileType = "wrapper.pb-project"; path = DynamicSDKExample.xcodeproj; sourceTree = "<group>"; };
+		5C3CBCE52F81A0B80075D2B2 /* README.md */ = {isa = PBXFileReference; lastKnownFileType = net.daringfireball.markdown; path = README.md; sourceTree = "<group>"; };
+		5EF61F281A294CF554BA4BFF /* DynamicSDKExample/Components/WalletCard.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DynamicSDKExample/Components/WalletCard.swift; sourceTree = "<group>"; };
+		9B2C9C6A2B00000100000001 /* DynamicSDKExample.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = DynamicSDKExample.app; sourceTree = BUILT_PRODUCTS_DIR; };
+		9B2C9C7F2B00000100000002 /* SplashScreen.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SplashScreen.swift; sourceTree = "<group>"; };
+		9B2C9C7F2B00000100000003 /* LoginScreen.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LoginScreen.swift; sourceTree = "<group>"; };
+		9B2C9C7F2B00000100000004 /* HomeScreen.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HomeScreen.swift; sourceTree = "<group>"; };
+		9B2C9C7F2B00000100000006 /* WalletDetailsScreen.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WalletDetailsScreen.swift; sourceTree = "<group>"; };
+		9B2C9C7F2B00000100000007 /* SignMessageScreen.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SignMessageScreen.swift; sourceTree = "<group>"; };
+		9B2C9C7F2B00000100000008 /* SolanaSignMessageScreen.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SolanaSignMessageScreen.swift; sourceTree = "<group>"; };
+		9B2C9C7F2B00000100000009 /* SolanaSendTransactionScreen.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SolanaSendTransactionScreen.swift; sourceTree = "<group>"; };
+		9B2C9C7F2B00000100000010 /* EvmSignTransactionScreen.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EvmSignTransactionScreen.swift; sourceTree = "<group>"; };
+		9B2C9C7F2B00000100000011 /* EvmSignTypedDataScreen.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EvmSignTypedDataScreen.swift; sourceTree = "<group>"; };
+		9B2C9C7F2B00000100000012 /* EvmSendTransactionScreen.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EvmSendTransactionScreen.swift; sourceTree = "<group>"; };
+		9B2C9C7F2B00000100000013 /* EvmWriteContractScreen.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EvmWriteContractScreen.swift; sourceTree = "<group>"; };
+		9B2C9C7F2B00000100000014 /* DynamicSDKExample/Components/SharedComponents.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DynamicSDKExample/Components/SharedComponents.swift; sourceTree = "<group>"; };
+		9B2C9C7F2B00000100000015 /* SolanaSignTransactionScreen.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SolanaSignTransactionScreen.swift; sourceTree = "<group>"; };
+		B7E1979B236B11315ADF20DA /* LoginScreenViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LoginScreenViewModel.swift; sourceTree = "<group>"; };
+		BA35598A278FA06EBE84A0A8 /* SplashScreenViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SplashScreenViewModel.swift; sourceTree = "<group>"; };
+		CUST0002000000000001 /* CustomBalanceScreen.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CustomBalanceScreen.swift; sourceTree = "<group>"; };
+		CUST0002000000000002 /* CustomBalanceViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CustomBalanceViewModel.swift; sourceTree = "<group>"; };
+		PRJS0002000000000001 /* ProjectSettingsScreen.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ProjectSettingsScreen.swift; sourceTree = "<group>"; };
+		SPLT0002000000000001 /* SolanaSendSplTokenScreen.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SolanaSendSplTokenScreen.swift; sourceTree = "<group>"; };
+		STUP0002000000000001 /* StepUpAuthScreen.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = StepUpAuthScreen.swift; sourceTree = "<group>"; };
+		SUI00002000000000001 /* SuiSignMessageScreen.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SuiSignMessageScreen.swift; sourceTree = "<group>"; };
+		SUI00002000000000002 /* SuiSignTransactionScreen.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SuiSignTransactionScreen.swift; sourceTree = "<group>"; };
+		SUI00002000000000003 /* SuiSendTransactionScreen.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SuiSendTransactionScreen.swift; sourceTree = "<group>"; };
+		TDEV0002000000000001 /* TrustedDevicesScreen.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TrustedDevicesScreen.swift; sourceTree = "<group>"; };
+		WC000002000000000001 /* WalletConnectScreen.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WalletConnectScreen.swift; sourceTree = "<group>"; };
+		WC000002000000000002 /* WcGlobalListener.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WcGlobalListener.swift; sourceTree = "<group>"; };
+		WC000002000000000003 /* QrScannerView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = QrScannerView.swift; sourceTree = "<group>"; };
+		WC000002000000000004 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+/* End PBXFileReference section */
+
+/* Begin PBXFrameworksBuildPhase section */
+		9B2C9C6F2B00000100000001 /* Frameworks */ = {
+			isa = PBXFrameworksBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				5C3CBCEB2F81A0CC0075D2B2 /* DynamicSDKSwift in Frameworks */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXFrameworksBuildPhase section */
+
+/* Begin PBXGroup section */
+		251444AF2F1ABDCC00BED54E /* Frameworks */ = {
+			isa = PBXGroup;
+			children = (
+				5C3CBCE62F81A0B80075D2B2 /* ExampleApp */,
+			);
+			name = Frameworks;
+			sourceTree = "<group>";
+		};
+		25AFB8C12EFEEC6C0013666D /* Recovered References */ = {
+			isa = PBXGroup;
+			children = (
+				9B2C9C7F2B00000100000014 /* DynamicSDKExample/Components/SharedComponents.swift */,
+				25AFB8CA2F0000020013666E /* DynamicSDKExample/Components/SecurityComponents.swift */,
+				503886089E26496E302940DC /* DynamicSDKExample/Components/ValueCard.swift */,
+				5EF61F281A294CF554BA4BFF /* DynamicSDKExample/Components/WalletCard.swift */,
+			);
+			name = "Recovered References";
+			sourceTree = "<group>";
+		};
+		260060A8DEFAB589B55582C6 /* App */ = {
+			isa = PBXGroup;
+			children = (
+				01DAD545716C3952260F8AC2 /* AppRootView.swift */,
+				19DA03555BA55B97B5C0B2BD /* Route.swift */,
+			);
+			path = App;
+			sourceTree = "<group>";
+		};
+		5C3CBCAF2F81A0B80075D2B2 /* App */ = {
+			isa = PBXGroup;
+			children = (
+				5C3CBCAD2F81A0B80075D2B2 /* AppRootView.swift */,
+				5C3CBCAE2F81A0B80075D2B2 /* Route.swift */,
+			);
+			path = App;
+			sourceTree = "<group>";
+		};
+		5C3CBCB42F81A0B80075D2B2 /* Components */ = {
+			isa = PBXGroup;
+			children = (
+				5C3CBCB02F81A0B80075D2B2 /* SecurityComponents.swift */,
+				5C3CBCB12F81A0B80075D2B2 /* SharedComponents.swift */,
+				5C3CBCB22F81A0B80075D2B2 /* ValueCard.swift */,
+				5C3CBCB32F81A0B80075D2B2 /* WalletCard.swift */,
+			);
+			path = Components;
+			sourceTree = "<group>";
+		};
+		5C3CBCCA2F81A0B80075D2B2 /* Wallet */ = {
+			isa = PBXGroup;
+			children = (
+				5C3CBCB52F81A0B80075D2B2 /* CreatePasswordWalletScreen.swift */,
+				5C3CBCB62F81A0B80075D2B2 /* CustomBalanceScreen.swift */,
+				5C3CBCB72F81A0B80075D2B2 /* CustomBalanceViewModel.swift */,
+				5C3CBCB82F81A0B80075D2B2 /* EvmSendErc20Screen.swift */,
+				5C3CBCB92F81A0B80075D2B2 /* EvmSendTransactionScreen.swift */,
+				5C3CBCBA2F81A0B80075D2B2 /* EvmSignTransactionScreen.swift */,
+				5C3CBCBB2F81A0B80075D2B2 /* EvmSignTypedDataScreen.swift */,
+				5C3CBCBC2F81A0B80075D2B2 /* EvmWriteContractScreen.swift */,
+				5C3CBCBD2F81A0B80075D2B2 /* SignMessageScreen.swift */,
+				5C3CBCBE2F81A0B80075D2B2 /* SolanaSendSplTokenScreen.swift */,
+				5C3CBCBF2F81A0B80075D2B2 /* SolanaSendTransactionScreen.swift */,
+				5C3CBCC02F81A0B80075D2B2 /* SolanaSignMessageScreen.swift */,
+				5C3CBCC12F81A0B80075D2B2 /* SolanaSignTransactionScreen.swift */,
+				5C3CBCC22F81A0B80075D2B2 /* SuiSendTransactionScreen.swift */,
+				5C3CBCC32F81A0B80075D2B2 /* SuiSignMessageScreen.swift */,
+				5C3CBCC42F81A0B80075D2B2 /* SuiSignTransactionScreen.swift */,
+				5C3CBCC52F81A0B80075D2B2 /* SwitchNetworkScreen.swift */,
+				5C3CBCC62F81A0B80075D2B2 /* SwitchNetworkViewModel.swift */,
+				5C3CBCC72F81A0B80075D2B2 /* WalletDetailsScreen.swift */,
+				5C3CBCC82F81A0B80075D2B2 /* WalletDetailsViewModel.swift */,
+				5C3CBCC92F81A0B80075D2B2 /* WalletPasswordScreen.swift */,
+			);
+			path = Wallet;
+			sourceTree = "<group>";
+		};
+		5C3CBCCE2F81A0B80075D2B2 /* WalletConnect */ = {
+			isa = PBXGroup;
+			children = (
+				5C3CBCCB2F81A0B80075D2B2 /* QrScannerView.swift */,
+				5C3CBCCC2F81A0B80075D2B2 /* WalletConnectScreen.swift */,
+				5C3CBCCD2F81A0B80075D2B2 /* WcGlobalListener.swift */,
+			);
+			path = WalletConnect;
+			sourceTree = "<group>";
+		};
+		5C3CBCDF2F81A0B80075D2B2 /* Screens */ = {
+			isa = PBXGroup;
+			children = (
+				5C3CBCCA2F81A0B80075D2B2 /* Wallet */,
+				5C3CBCCE2F81A0B80075D2B2 /* WalletConnect */,
+				5C3CBCCF2F81A0B80075D2B2 /* CustomBalanceScreen.swift */,
+				5C3CBCD02F81A0B80075D2B2 /* CustomBalanceViewModel.swift */,
+				5C3CBCD12F81A0B80075D2B2 /* DelegationScreen.swift */,
+				5C3CBCD22F81A0B80075D2B2 /* HomeScreen.swift */,
+				5C3CBCD32F81A0B80075D2B2 /* HomeScreenViewModel.swift */,
+				5C3CBCD42F81A0B80075D2B2 /* LoginScreen.swift */,
+				5C3CBCD52F81A0B80075D2B2 /* LoginScreenViewModel.swift */,
+				5C3CBCD62F81A0B80075D2B2 /* MfaAddDeviceScreen.swift */,
+				5C3CBCD72F81A0B80075D2B2 /* MfaDevicesScreen.swift */,
+				5C3CBCD82F81A0B80075D2B2 /* MfaRecoveryCodesScreen.swift */,
+				5C3CBCD92F81A0B80075D2B2 /* PasskeysScreen.swift */,
+				5C3CBCDA2F81A0B80075D2B2 /* ProjectSettingsScreen.swift */,
+				5C3CBCDB2F81A0B80075D2B2 /* SplashScreen.swift */,
+				5C3CBCDC2F81A0B80075D2B2 /* SplashScreenViewModel.swift */,
+				5C3CBCDD2F81A0B80075D2B2 /* StepUpAuthScreen.swift */,
+				5C3CBCDE2F81A0B80075D2B2 /* TrustedDevicesScreen.swift */,
+			);
+			path = Screens;
+			sourceTree = "<group>";
+		};
+		5C3CBCE32F81A0B80075D2B2 /* DynamicSDKExample */ = {
+			isa = PBXGroup;
+			children = (
+				5C3CBCAF2F81A0B80075D2B2 /* App */,
+				5C3CBCB42F81A0B80075D2B2 /* Components */,
+				5C3CBCDF2F81A0B80075D2B2 /* Screens */,
+				5C3CBCE02F81A0B80075D2B2 /* DynamicSDKExample.entitlements */,
+				5C3CBCE12F81A0B80075D2B2 /* DynamicSDKExampleApp.swift */,
+				5C3CBCE22F81A0B80075D2B2 /* Info.plist */,
+			);
+			path = DynamicSDKExample;
+			sourceTree = "<group>";
+		};
+		5C3CBCE62F81A0B80075D2B2 /* ExampleApp */ = {
+			isa = PBXGroup;
+			children = (
+				5C3CBCE32F81A0B80075D2B2 /* DynamicSDKExample */,
+				5C3CBCE42F81A0B80075D2B2 /* DynamicSDKExample.xcodeproj */,
+				5C3CBCE52F81A0B80075D2B2 /* README.md */,
+			);
+			name = ExampleApp;
+			sourceTree = "<group>";
+		};
+		5C3CBCE72F81A0B80075D2B2 /* Products */ = {
+			isa = PBXGroup;
+			name = Products;
+			sourceTree = "<group>";
+		};
+		9B2C9C612B00000100000001 = {
+			isa = PBXGroup;
+			children = (
+				9B2C9C762B00000100000001 /* DynamicSDKExample */,
+				9B2C9C6B2B00000100000001 /* Products */,
+				25AFB8C12EFEEC6C0013666D /* Recovered References */,
+				251444AF2F1ABDCC00BED54E /* Frameworks */,
+			);
+			sourceTree = "<group>";
+		};
+		9B2C9C6B2B00000100000001 /* Products */ = {
+			isa = PBXGroup;
+			children = (
+				9B2C9C6A2B00000100000001 /* DynamicSDKExample.app */,
+			);
+			name = Products;
+			sourceTree = "<group>";
+		};
+		9B2C9C762B00000100000001 /* DynamicSDKExample */ = {
+			isa = PBXGroup;
+			children = (
+				260060A8DEFAB589B55582C6 /* App */,
+				9B2C9C792B00000100000005 /* Screens */,
+				25AFB8C22EFEEDB30013666D /* DynamicSDKExampleApp.swift */,
+				25AFB8D02F1000000013666F /* DynamicSDKExample.entitlements */,
+				WC000002000000000004 /* Info.plist */,
+			);
+			path = DynamicSDKExample;
+			sourceTree = "<group>";
+		};
+		9B2C9C792B00000100000005 /* Screens */ = {
+			isa = PBXGroup;
+			children = (
+				9B2C9C7F2B00000100000002 /* SplashScreen.swift */,
+				BA35598A278FA06EBE84A0A8 /* SplashScreenViewModel.swift */,
+				9B2C9C7F2B00000100000003 /* LoginScreen.swift */,
+				B7E1979B236B11315ADF20DA /* LoginScreenViewModel.swift */,
+				9B2C9C7F2B00000100000004 /* HomeScreen.swift */,
+				4AB21CB71A347F6991D4ED28 /* HomeScreenViewModel.swift */,
+				25AFB8C62F0000020013666E /* MfaDevicesScreen.swift */,
+				25AFB8C72F0000020013666E /* MfaAddDeviceScreen.swift */,
+				25AFB8C82F0000020013666E /* MfaRecoveryCodesScreen.swift */,
+				25206D5B2F3B3A5D007740AA /* DelegationScreen.swift */,
+				25AFB8C92F0000020013666E /* PasskeysScreen.swift */,
+				PRJS0002000000000001 /* ProjectSettingsScreen.swift */,
+				STUP0002000000000001 /* StepUpAuthScreen.swift */,
+				TDEV0002000000000001 /* TrustedDevicesScreen.swift */,
+				9B2C9C792B00000100000020 /* Wallet */,
+				WC000003000000000001 /* WalletConnect */,
+			);
+			path = Screens;
+			sourceTree = "<group>";
+		};
+		9B2C9C792B00000100000020 /* Wallet */ = {
+			isa = PBXGroup;
+			children = (
+				9B2C9C7F2B00000100000006 /* WalletDetailsScreen.swift */,
+				279E20DCE7D3D453D72016B4 /* WalletDetailsViewModel.swift */,
+				31588B8A6C4C6AA4D2E86E36 /* SwitchNetworkScreen.swift */,
+				2F7B0B6D9B0F4D3D9F7D0C41 /* SwitchNetworkViewModel.swift */,
+				CUST0002000000000001 /* CustomBalanceScreen.swift */,
+				CUST0002000000000002 /* CustomBalanceViewModel.swift */,
+				9B2C9C7F2B00000100000007 /* SignMessageScreen.swift */,
+				9B2C9C7F2B00000100000008 /* SolanaSignMessageScreen.swift */,
+				9B2C9C7F2B00000100000015 /* SolanaSignTransactionScreen.swift */,
+				9B2C9C7F2B00000100000009 /* SolanaSendTransactionScreen.swift */,
+				9B2C9C7F2B00000100000010 /* EvmSignTransactionScreen.swift */,
+				9B2C9C7F2B00000100000011 /* EvmSignTypedDataScreen.swift */,
+				9B2C9C7F2B00000100000012 /* EvmSendTransactionScreen.swift */,
+				9B2C9C7F2B00000100000013 /* EvmWriteContractScreen.swift */,
+				41874C723A6DE7A70EE54055 /* EvmSendErc20Screen.swift */,
+				SPLT0002000000000001 /* SolanaSendSplTokenScreen.swift */,
+				SUI00002000000000001 /* SuiSignMessageScreen.swift */,
+				SUI00002000000000002 /* SuiSignTransactionScreen.swift */,
+				SUI00002000000000003 /* SuiSendTransactionScreen.swift */,
+			);
+			path = Wallet;
+			sourceTree = "<group>";
+		};
+		WC000003000000000001 /* WalletConnect */ = {
+			isa = PBXGroup;
+			children = (
+				WC000002000000000001 /* WalletConnectScreen.swift */,
+				WC000002000000000002 /* WcGlobalListener.swift */,
+				WC000002000000000003 /* QrScannerView.swift */,
+			);
+			path = WalletConnect;
+			sourceTree = "<group>";
+		};
+/* End PBXGroup section */
+
+/* Begin PBXNativeTarget section */
+		9B2C9C692B00000100000001 /* DynamicSDKExample */ = {
+			isa = PBXNativeTarget;
+			buildConfigurationList = 9B2C9C722B00000100000001 /* Build configuration list for PBXNativeTarget "DynamicSDKExample" */;
+			buildPhases = (
+				9B2C9C6E2B00000100000001 /* Sources */,
+				9B2C9C6F2B00000100000001 /* Frameworks */,
+				9B2C9C702B00000100000001 /* Resources */,
+				251444B32F1ABDCC00BED54E /* Embed Frameworks */,
+			);
+			buildRules = (
+			);
+			dependencies = (
+			);
+			name = DynamicSDKExample;
+			packageProductDependencies = (
+				5C3CBCEA2F81A0CC0075D2B2 /* DynamicSDKSwift */,
+			);
+			productName = DynamicSDKExample;
+			productReference = 9B2C9C6A2B00000100000001 /* DynamicSDKExample.app */;
+			productType = "com.apple.product-type.application";
+		};
+/* End PBXNativeTarget section */
+
+/* Begin PBXProject section */
+		9B2C9C622B00000100000001 /* Project object */ = {
+			isa = PBXProject;
+			attributes = {
+				BuildIndependentTargetsInParallel = 1;
+				LastUpgradeCheck = 1600;
+				TargetAttributes = {
+					9B2C9C692B00000100000001 = {
+						CreatedOnToolsVersion = 16.0;
+					};
+				};
+			};
+			buildConfigurationList = 9B2C9C652B00000100000001 /* Build configuration list for PBXProject "DynamicSDKExample" */;
+			compatibilityVersion = "Xcode 14.0";
+			developmentRegion = en;
+			hasScannedForEncodings = 0;
+			knownRegions = (
+				en,
+				Base,
+			);
+			mainGroup = 9B2C9C612B00000100000001;
+			packageReferences = (
+				5C3CBCE92F81A0CC0075D2B2 /* XCRemoteSwiftPackageReference "swift-sdk-and-sample-app" */,
+			);
+			productRefGroup = 9B2C9C6B2B00000100000001 /* Products */;
+			projectDirPath = "";
+			projectReferences = (
+				{
+					ProductGroup = 5C3CBCE72F81A0B80075D2B2 /* Products */;
+					ProjectRef = 5C3CBCE42F81A0B80075D2B2 /* DynamicSDKExample.xcodeproj */;
+				},
+			);
+			projectRoot = "";
+			targets = (
+				9B2C9C692B00000100000001 /* DynamicSDKExample */,
+			);
+		};
+/* End PBXProject section */
+
+/* Begin PBXResourcesBuildPhase section */
+		9B2C9C702B00000100000001 /* Resources */ = {
+			isa = PBXResourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXResourcesBuildPhase section */
+
+/* Begin PBXSourcesBuildPhase section */
+		9B2C9C6E2B00000100000001 /* Sources */ = {
+			isa = PBXSourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				9B2C9C7A2B00000100000001 /* (null) in Sources */,
+				BBF6EE2C54F3261916A52BD5 /* SplashScreenViewModel.swift in Sources */,
+				069898F3595F822E90304493 /* AppRootView.swift in Sources */,
+				22D16B387EE61062CA2E9523 /* Route.swift in Sources */,
+				2B307B30551580BE806D398B /* WalletDetailsViewModel.swift in Sources */,
+				4CE62D012682B8019FA5004B /* HomeScreenViewModel.swift in Sources */,
+				9B2C9C802B00000100000002 /* SplashScreen.swift in Sources */,
+				9B2C9C832B00000100000014 /* DynamicSDKExample/Components/SharedComponents.swift in Sources */,
+				547499A0086DA622DD2132C0 /* DynamicSDKExample/Components/ValueCard.swift in Sources */,
+				6F99C6888B6E9C6FFDB06364 /* DynamicSDKExample/Components/WalletCard.swift in Sources */,
+				25AFB8C32EFEEDB30013666D /* DynamicSDKExampleApp.swift in Sources */,
+				9D6461CCD5A67CAB7D5799A4 /* LoginScreenViewModel.swift in Sources */,
+				9B2C9C812B00000100000003 /* LoginScreen.swift in Sources */,
+				9B2C9C822B00000100000004 /* HomeScreen.swift in Sources */,
+				25AFB8CF2F0000020013666E /* DynamicSDKExample/Components/SecurityComponents.swift in Sources */,
+				25AFB8CB2F0000020013666E /* MfaDevicesScreen.swift in Sources */,
+				25AFB8CC2F0000020013666E /* MfaAddDeviceScreen.swift in Sources */,
+				25AFB8CD2F0000020013666E /* MfaRecoveryCodesScreen.swift in Sources */,
+				25AFB8CE2F0000020013666E /* PasskeysScreen.swift in Sources */,
+				9B2C9C842B00000100000006 /* WalletDetailsScreen.swift in Sources */,
+				404BC9C5B3FEEFF1D1A21C15 /* SwitchNetworkScreen.swift in Sources */,
+				2F7B0B6E9B0F4D3D9F7D0C41 /* SwitchNetworkViewModel.swift in Sources */,
+				9B2C9C852B00000100000007 /* SignMessageScreen.swift in Sources */,
+				9B2C9C862B00000100000008 /* SolanaSignMessageScreen.swift in Sources */,
+				9B2C9C8C2B00000100000015 /* SolanaSignTransactionScreen.swift in Sources */,
+				25206D5C2F3B3A5D007740AA /* DelegationScreen.swift in Sources */,
+				9B2C9C872B00000100000009 /* SolanaSendTransactionScreen.swift in Sources */,
+				9B2C9C882B00000100000010 /* EvmSignTransactionScreen.swift in Sources */,
+				9B2C9C892B00000100000011 /* EvmSignTypedDataScreen.swift in Sources */,
+				9B2C9C8A2B00000100000012 /* EvmSendTransactionScreen.swift in Sources */,
+				9B2C9C8B2B00000100000013 /* EvmWriteContractScreen.swift in Sources */,
+				45D32B68DEAED49BBC8AC812 /* EvmSendErc20Screen.swift in Sources */,
+				CUST0001000000000001 /* CustomBalanceScreen.swift in Sources */,
+				CUST0001000000000002 /* CustomBalanceViewModel.swift in Sources */,
+				PRJS0001000000000001 /* ProjectSettingsScreen.swift in Sources */,
+				SPLT0001000000000001 /* SolanaSendSplTokenScreen.swift in Sources */,
+				STUP0001000000000001 /* StepUpAuthScreen.swift in Sources */,
+				TDEV0001000000000001 /* TrustedDevicesScreen.swift in Sources */,
+				SUI00001000000000001 /* SuiSignMessageScreen.swift in Sources */,
+				SUI00001000000000002 /* SuiSignTransactionScreen.swift in Sources */,
+				SUI00001000000000003 /* SuiSendTransactionScreen.swift in Sources */,
+				WC000001000000000001 /* WalletConnectScreen.swift in Sources */,
+				WC000001000000000002 /* WcGlobalListener.swift in Sources */,
+				WC000001000000000003 /* QrScannerView.swift in Sources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXSourcesBuildPhase section */
+
+/* Begin XCBuildConfiguration section */
+		9B2C9C662B00000100000001 /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				CLANG_ANALYZER_NONNULL = YES;
+				CLANG_CXX_LANGUAGE_STANDARD = "gnu++20";
+				CLANG_CXX_LIBRARY = "libc++";
+				CLANG_ENABLE_MODULES = YES;
+				CLANG_ENABLE_OBJC_ARC = YES;
+				COPY_PHASE_STRIP = NO;
+				DEBUG_INFORMATION_FORMAT = dwarf;
+				DEVELOPMENT_TEAM = "";
+				ENABLE_STRICT_OBJC_MSGSEND = YES;
+				ENABLE_TESTABILITY = YES;
+				GCC_C_LANGUAGE_STANDARD = gnu11;
+				IPHONEOS_DEPLOYMENT_TARGET = 16.0;
+				MTL_ENABLE_DEBUG_INFO = INCLUDE_SOURCE;
+				ONLY_ACTIVE_ARCH = YES;
+				SDKROOT = iphoneos;
+				SWIFT_ACTIVE_COMPILATION_CONDITIONS = DEBUG;
+				SWIFT_VERSION = 5.0;
+			};
+			name = Debug;
+		};
+		9B2C9C672B00000100000001 /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				CLANG_ANALYZER_NONNULL = YES;
+				CLANG_CXX_LANGUAGE_STANDARD = "gnu++20";
+				CLANG_CXX_LIBRARY = "libc++";
+				CLANG_ENABLE_MODULES = YES;
+				CLANG_ENABLE_OBJC_ARC = YES;
+				COPY_PHASE_STRIP = YES;
+				DEBUG_INFORMATION_FORMAT = "dwarf-with-dsym";
+				DEVELOPMENT_TEAM = "";
+				ENABLE_NS_ASSERTIONS = NO;
+				ENABLE_STRICT_OBJC_MSGSEND = YES;
+				GCC_C_LANGUAGE_STANDARD = gnu11;
+				IPHONEOS_DEPLOYMENT_TARGET = 16.0;
+				SDKROOT = iphoneos;
+				SWIFT_VERSION = 5.0;
+			};
+			name = Release;
+		};
+		9B2C9C732B00000100000001 /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ASSETCATALOG_COMPILER_APPICON_NAME = "";
+				CODE_SIGN_ENTITLEMENTS = DynamicSDKExample/DynamicSDKExample.entitlements;
+				CODE_SIGN_IDENTITY = "Apple Development";
+				CODE_SIGN_STYLE = Automatic;
+				DEVELOPMENT_ASSET_PATHS = "";
+				DEVELOPMENT_TEAM = TS4RX6E9KD;
+				ENABLE_PREVIEWS = YES;
+				GENERATE_INFOPLIST_FILE = YES;
+				INFOPLIST_FILE = DynamicSDKExample/Info.plist;
+				INFOPLIST_KEY_CFBundleDisplayName = DynamicSDKExample;
+				INFOPLIST_KEY_LSApplicationCategoryType = "public.app-category.developer-tools";
+				INFOPLIST_KEY_NSCameraUsageDescription = "Camera access is needed to scan WalletConnect QR codes";
+				INFOPLIST_KEY_UIApplicationSupportsIndirectInputEvents = YES;
+				INFOPLIST_KEY_UILaunchScreen_Generation = YES;
+				LD_RUNPATH_SEARCH_PATHS = (
+					"$(inherited)",
+					"@executable_path/Frameworks",
+				);
+				MARKETING_VERSION = 0.1.0;
+				PRODUCT_BUNDLE_IDENTIFIER = xyz.wildcard.app;
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				PROVISIONING_PROFILE_SPECIFIER = "";
+				SWIFT_EMIT_LOC_STRINGS = YES;
+				SWIFT_VERSION = 5.0;
+				TARGETED_DEVICE_FAMILY = "1,2";
+			};
+			name = Debug;
+		};
+		9B2C9C752B00000100000001 /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ASSETCATALOG_COMPILER_APPICON_NAME = "";
+				CODE_SIGN_ENTITLEMENTS = DynamicSDKExample/DynamicSDKExample.entitlements;
+				CODE_SIGN_IDENTITY = "Apple Development";
+				CODE_SIGN_STYLE = Automatic;
+				DEVELOPMENT_ASSET_PATHS = "";
+				DEVELOPMENT_TEAM = TS4RX6E9KD;
+				ENABLE_PREVIEWS = YES;
+				GENERATE_INFOPLIST_FILE = YES;
+				INFOPLIST_FILE = DynamicSDKExample/Info.plist;
+				INFOPLIST_KEY_CFBundleDisplayName = DynamicSDKExample;
+				INFOPLIST_KEY_LSApplicationCategoryType = "public.app-category.developer-tools";
+				INFOPLIST_KEY_NSCameraUsageDescription = "Camera access is needed to scan WalletConnect QR codes";
+				INFOPLIST_KEY_UIApplicationSupportsIndirectInputEvents = YES;
+				INFOPLIST_KEY_UILaunchScreen_Generation = YES;
+				LD_RUNPATH_SEARCH_PATHS = (
+					"$(inherited)",
+					"@executable_path/Frameworks",
+				);
+				MARKETING_VERSION = 0.1.0;
+				PRODUCT_BUNDLE_IDENTIFIER = xyz.wildcard.app;
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				PROVISIONING_PROFILE_SPECIFIER = "";
+				SWIFT_EMIT_LOC_STRINGS = YES;
+				SWIFT_VERSION = 5.0;
+				TARGETED_DEVICE_FAMILY = "1,2";
+			};
+			name = Release;
+		};
+/* End XCBuildConfiguration section */
+
+/* Begin XCConfigurationList section */
+		9B2C9C652B00000100000001 /* Build configuration list for PBXProject "DynamicSDKExample" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				9B2C9C662B00000100000001 /* Debug */,
+				9B2C9C672B00000100000001 /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
+		9B2C9C722B00000100000001 /* Build configuration list for PBXNativeTarget "DynamicSDKExample" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				9B2C9C732B00000100000001 /* Debug */,
+				9B2C9C752B00000100000001 /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
+/* End XCConfigurationList section */
+
+/* Begin XCRemoteSwiftPackageReference section */
+		5C3CBCE92F81A0CC0075D2B2 /* XCRemoteSwiftPackageReference "swift-sdk-and-sample-app" */ = {
+			isa = XCRemoteSwiftPackageReference;
+			repositoryURL = "https://github.com/dynamic-labs/swift-sdk-and-sample-app.git";
+			requirement = {
+				kind = upToNextMajorVersion;
+				minimumVersion = 1.0.11;
+			};
+		};
+/* End XCRemoteSwiftPackageReference section */
+
+/* Begin XCSwiftPackageProductDependency section */
+		5C3CBCEA2F81A0CC0075D2B2 /* DynamicSDKSwift */ = {
+			isa = XCSwiftPackageProductDependency;
+			package = 5C3CBCE92F81A0CC0075D2B2 /* XCRemoteSwiftPackageReference "swift-sdk-and-sample-app" */;
+			productName = DynamicSDKSwift;
+		};
+/* End XCSwiftPackageProductDependency section */
+	};
+	rootObject = 9B2C9C622B00000100000001 /* Project object */;
+}

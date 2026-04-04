@@ -1,4 +1,4 @@
-name: LiveStream
+name: Arcadia
 options:
   bundleIdPrefix: com.ethglobal.cannes2026
   deploymentTarget:
@@ -6,7 +6,7 @@ options:
   xcodeVersion: "15.0"
 
 targets:
-  LiveStream:
+  Arcadia:
     type: application
     platform: iOS
     deploymentTarget: "17.0"
@@ -17,15 +17,15 @@ targets:
     info:
       path: LiveStream/Info.plist
       properties:
-        CFBundleDisplayName: LiveStream
+        CFBundleDisplayName: Arcadia
         CFBundleShortVersionString: "1.0"
         CFBundleVersion: "1"
         UILaunchScreen:
-          UIColorName: ""
+          UIColorName: "LaunchBackground"
         CFBundleURLTypes:
           - CFBundleTypeRole: Editor
             CFBundleURLSchemes:
-              - livestream
+              - arcadia
         NSCameraUsageDescription: "Camera access is needed to broadcast live streams."
         NSMicrophoneUsageDescription: "Microphone access is needed to broadcast live audio."
         UIApplicationSupportsIndirectInputEvents: true
@@ -36,5 +36,5 @@ targets:
     settings:
       base:
         SWIFT_VERSION: "5.9"
-        PRODUCT_BUNDLE_IDENTIFIER: com.ethglobal.cannes2026.livestream
+        PRODUCT_BUNDLE_IDENTIFIER: com.ethglobal.cannes2026.arcadia
         DEVELOPMENT_TEAM: ""

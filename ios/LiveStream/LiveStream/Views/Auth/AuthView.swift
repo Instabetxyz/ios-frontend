@@ -42,11 +42,7 @@ struct AuthView: View {
                             .background(.purple)
                             .foregroundStyle(.white)
                             .clipShape(RoundedRectangle(cornerRadius: 14))
-                    }
-
-                    Text("Powered by Dynamic · Stored on 0G")
-                        .font(.caption)
-                        .foregroundStyle(.gray)
+                    }                    
                 }
                 .padding(.horizontal, 32)
                 .padding(.bottom, 48)

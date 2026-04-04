@@ -12,7 +12,10 @@ class AppState: ObservableObject {
     private var cancellables = Set<AnyCancellable>()
 
     init() {
-        guard let sdk = try? DynamicSDK.shared else { return }
+        guard let sdk = try? DynamicSDK.shared else {
+            print("⚠️ DynamicSDK not initialized yet")
+            return
+        }
 
         sdk.auth.authenticatedUserChanges
             .receive(on: DispatchQueue.main)

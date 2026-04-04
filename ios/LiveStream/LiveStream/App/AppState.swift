@@ -45,7 +45,7 @@ class AppState: ObservableObject {
 
     func logout() async {
         do {
-            try await DynamicSDK.shared?.auth.logout()
+            try await DynamicSDK.shared.auth.logout()
         } catch {
             print("Logout failed: \(error)")
         }

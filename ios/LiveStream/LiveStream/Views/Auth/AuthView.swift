@@ -30,7 +30,7 @@ struct AuthView: View {
                 VStack(spacing: 16) {
                     Button {
                         do {
-                            try DynamicSDK.shared?.ui.showAuth()
+                            try DynamicSDK.shared.ui.showAuth()
                         } catch {
                             print("Error showing auth: \(error)")
                         }

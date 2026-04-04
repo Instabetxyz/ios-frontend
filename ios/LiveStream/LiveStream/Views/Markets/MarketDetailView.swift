@@ -114,7 +114,7 @@ struct MarketDetailView: View {
                     Rectangle()
                         .fill(.red)
                         .frame(width: geo.size.width * currentOdds.no, height: 28)
-                        .clipShape(.rect(topTrailingRadius: 8, bottomTrailingRadius: 8))
+                        .clipShape(.rect(bottomTrailingRadius: 8, topTrailingRadius: 8))
                 }
                 .animation(.easeInOut(duration: 0.3), value: currentOdds.yes)
             }

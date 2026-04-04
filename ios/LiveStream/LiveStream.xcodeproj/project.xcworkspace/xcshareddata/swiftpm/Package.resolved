@@ -1,0 +1,15 @@
+{
+  "originHash" : "a0a7073f2a3b5bf68c163efb2ac405619d62b06a45ff4762124e9bc57e7ca7df",
+  "pins" : [
+    {
+      "identity" : "swift-sdk-and-sample-app",
+      "kind" : "remoteSourceControl",
+      "location" : "https://github.com/dynamic-labs/swift-sdk-and-sample-app",
+      "state" : {
+        "revision" : "2903d4d70c477a8119108769a00363df1a5c7180",
+        "version" : "1.0.11"
+      }
+    }
+  ],
+  "version" : 3
+}

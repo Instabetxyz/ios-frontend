@@ -3,7 +3,7 @@
 	archiveVersion = 1;
 	classes = {
 	};
-	objectVersion = 77;
+	objectVersion = 63;
 	objects = {
 
 /* Begin PBXBuildFile section */
@@ -194,9 +194,11 @@
 			buildRules = (
 			);
 			dependencies = (
+				5CB6BC7A2F818C380070B497 /* PBXTargetDependency */,
 			);
 			name = LiveStream;
 			packageProductDependencies = (
+				5CB6BC762F818BBE0070B497 /* DynamicSDKSwift */,
 			);
 			productName = LiveStream;
 			productReference = 3AE0327B5A198CC84546687C /* LiveStream.app */;
@@ -226,7 +228,9 @@
 			);
 			mainGroup = 800127355AA296D62CC804B1;
 			minimizedProjectReferenceProxies = 1;
-			preferredProjectObjectVersion = 77;
+			packageReferences = (
+				5CB6BC752F818BBE0070B497 /* XCRemoteSwiftPackageReference "swift-sdk-and-sample-app" */,
+			);
 			projectDirPath = "";
 			projectRoot = "";
 			targets = (
@@ -265,6 +269,13 @@
 			runOnlyForDeploymentPostprocessing = 0;
 		};
 /* End PBXSourcesBuildPhase section */
+
+/* Begin PBXTargetDependency section */
+		5CB6BC7A2F818C380070B497 /* PBXTargetDependency */ = {
+			isa = PBXTargetDependency;
+			productRef = 5CB6BC792F818C380070B497 /* DynamicSDKSwift */;
+		};
+/* End PBXTargetDependency section */
 
 /* Begin XCBuildConfiguration section */
 		0713A8BEF46EDEB710DE39BD /* Debug */ = {
@@ -446,6 +457,30 @@
 			defaultConfigurationName = Debug;
 		};
 /* End XCConfigurationList section */
+
+/* Begin XCRemoteSwiftPackageReference section */
+		5CB6BC752F818BBE0070B497 /* XCRemoteSwiftPackageReference "swift-sdk-and-sample-app" */ = {
+			isa = XCRemoteSwiftPackageReference;
+			repositoryURL = "https://github.com/dynamic-labs/swift-sdk-and-sample-app";
+			requirement = {
+				kind = upToNextMajorVersion;
+				minimumVersion = 1.0.11;
+			};
+		};
+/* End XCRemoteSwiftPackageReference section */
+
+/* Begin XCSwiftPackageProductDependency section */
+		5CB6BC762F818BBE0070B497 /* DynamicSDKSwift */ = {
+			isa = XCSwiftPackageProductDependency;
+			package = 5CB6BC752F818BBE0070B497 /* XCRemoteSwiftPackageReference "swift-sdk-and-sample-app" */;
+			productName = DynamicSDKSwift;
+		};
+		5CB6BC792F818C380070B497 /* DynamicSDKSwift */ = {
+			isa = XCSwiftPackageProductDependency;
+			package = 5CB6BC752F818BBE0070B497 /* XCRemoteSwiftPackageReference "swift-sdk-and-sample-app" */;
+			productName = DynamicSDKSwift;
+		};
+/* End XCSwiftPackageProductDependency section */
 	};
 	rootObject = 1BE510DB2332279DBCB6D143 /* Project object */;
 }

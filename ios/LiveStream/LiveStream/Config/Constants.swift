@@ -8,6 +8,10 @@ enum Constants {
     static let redirectUrl = "arcadia://callback"
     static let appOrigin = "https://arcadia.app"
 
+    // 0G Galileo Testnet
+    static let chainId: Int = 16602
+    static let rpcUrl = "https://evmrpc-testnet.0g.ai"
+
     // Backend (stubbed for now — set to your ngrok/backend URL when ready)
     static let backendBaseUrl = "http://localhost:3000"
 }

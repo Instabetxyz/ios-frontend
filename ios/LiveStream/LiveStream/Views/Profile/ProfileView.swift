@@ -99,7 +99,8 @@ struct ProfileView: View {
         isLoading = true
         defer { isLoading = false }
 
-        balance = "0.00 OG"
+        await WalletService.shared.refreshBalance()
+        balance = WalletService.shared.balance
         let all = (try? await APIClient.shared.getStreams()) ?? []
         myStreams = all.filter { $0.creatorAddress.lowercased() == appState.walletAddress?.lowercased() }
     }

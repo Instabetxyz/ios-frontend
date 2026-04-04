@@ -32,6 +32,7 @@
 		7892A3F99A7605313C88197A /* StreamFeedView.swift in Sources */ = {isa = PBXBuildFile; fileRef = A98F760CBDB2524C4E47CC7F /* StreamFeedView.swift */; };
 		7BCA98A6E65C7A44576BBBA0 /* LivePlayerView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 86A6BF9BBE3D12EC890C5F2E /* LivePlayerView.swift */; };
 		9A34B136773550C1D28F597C /* AppState.swift in Sources */ = {isa = PBXBuildFile; fileRef = AB9E6B957F893C78C315D5D5 /* AppState.swift */; };
+		AA11BB22CC33DD44EE55FF66 /* MachineFiService.swift in Sources */ = {isa = PBXBuildFile; fileRef = BB22CC33DD44EE55FF6677AA /* MachineFiService.swift */; };
 		B0AC06383E2AC67D22D9159A /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = D6ADE99C572EC29845CA9C9B /* Assets.xcassets */; };
 		CB2084FA9F8CCE593A5A4275 /* LiveStreamApp.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5F2CA85BFA68DB9151B206D4 /* LiveStreamApp.swift */; };
 		D1926722FDF70A879FC1BC1C /* MarketsView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7A0AEF5C49AB99CA5927CA65 /* MarketsView.swift */; };
@@ -79,6 +80,7 @@
 		A36B9D073A0D39312472E36D /* HLSBroadcastService.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HLSBroadcastService.swift; sourceTree = "<group>"; };
 		A98F760CBDB2524C4E47CC7F /* StreamFeedView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = StreamFeedView.swift; sourceTree = "<group>"; };
 		AB9E6B957F893C78C315D5D5 /* AppState.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppState.swift; sourceTree = "<group>"; };
+		BB22CC33DD44EE55FF6677AA /* MachineFiService.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MachineFiService.swift; sourceTree = "<group>"; };
 		BD47DCC560FF89CEB5397D1B /* Arcadia.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = Arcadia.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		C0A8C6130B38B27A580A1F79 /* StreamBetClient.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = StreamBetClient.swift; sourceTree = "<group>"; };
 		C4DD6CF13A0F23FAEDC5FABB /* WalletService.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WalletService.swift; sourceTree = "<group>"; };
@@ -170,6 +172,7 @@
 			children = (
 				65296A0FE2D133254E4CE51D /* APIClient.swift */,
 				A36B9D073A0D39312472E36D /* HLSBroadcastService.swift */,
+				BB22CC33DD44EE55FF6677AA /* MachineFiService.swift */,
 				C0A8C6130B38B27A580A1F79 /* StreamBetClient.swift */,
 				192F00DF7DDA4F711F5AE1CE /* StreamBetWebSocket.swift */,
 				C4DD6CF13A0F23FAEDC5FABB /* WalletService.swift */,
@@ -267,10 +270,6 @@
 			dependencies = (
 			);
 			name = Arcadia;
-			packageProductDependencies = (
-				5C3CBCED2F81A2560075D2B2 /* DynamicSDKSwift */,
-				5C3CBCEF2F81A2B10075D2B2 /* DynamicSDKSwift */,
-			);
 			productName = Arcadia;
 			productReference = BD47DCC560FF89CEB5397D1B /* Arcadia.app */;
 			productType = "com.apple.product-type.application";
@@ -327,6 +326,7 @@
 				FC78B438729921ABA4ED25D2 /* Constants.swift in Sources */,
 				248F3E554009518ADDE889EE /* DynamicSDK+Safe.swift in Sources */,
 				4878ABA64C52A08E5B076EDF /* HLSBroadcastService.swift in Sources */,
+				AA11BB22CC33DD44EE55FF66 /* MachineFiService.swift in Sources */,
 				628E7364ECDE825B7B27E79C /* HomeView.swift in Sources */,
 				7BCA98A6E65C7A44576BBBA0 /* LivePlayerView.swift in Sources */,
 				CB2084FA9F8CCE593A5A4275 /* LiveStreamApp.swift in Sources */,
@@ -527,16 +527,6 @@
 		};
 /* End XCConfigurationList section */
 
-/* Begin XCSwiftPackageProductDependency section */
-		5C3CBCED2F81A2560075D2B2 /* DynamicSDKSwift */ = {
-			isa = XCSwiftPackageProductDependency;
-			productName = DynamicSDKSwift;
-		};
-		5C3CBCEF2F81A2B10075D2B2 /* DynamicSDKSwift */ = {
-			isa = XCSwiftPackageProductDependency;
-			productName = DynamicSDKSwift;
-		};
-/* End XCSwiftPackageProductDependency section */
 	};
 	rootObject = 4B7847D49C6A0D12349EA15D /* Project object */;
 }

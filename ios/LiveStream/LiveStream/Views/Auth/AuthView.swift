@@ -37,7 +37,7 @@ struct AuthView: View {
 
     var body: some View {
         ZStack {
-            LoopingVideoPlayer(videoName: "login_bg", videoExtension: "mp4")
+            LoopingVideoPlayer(videoName: "bg", videoExtension: "mp4")
                 .ignoresSafeArea()
 
             Color.black.opacity(0.45).ignoresSafeArea()

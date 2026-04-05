@@ -38,6 +38,7 @@ struct LoopingVideoPlayer: UIViewRepresentable {
 struct BetView: View {
     let videoName: String
     let question: String
+    let wager: String
     let yesOdds: Int
 
     var noOdds: Int { 100 - yesOdds }
@@ -58,9 +59,15 @@ struct BetView: View {
 
                 // Content sits above the tab bar
                 VStack(alignment: .leading, spacing: 16) {
-                    Text("Q: \(question)")
-                        .font(.system(size: 17, weight: .semibold))
-                        .foregroundStyle(.white)
+                    VStack(alignment: .leading, spacing: 4) {
+                        Text("Q: \(question)")
+                            .font(.system(size: 17, weight: .semibold))
+                            .foregroundStyle(.white)
+
+                        Text("Current bet: \(wager)")
+                            .font(.system(size: 13, weight: .regular))
+                            .foregroundStyle(.white.opacity(0.7))
+                    }
 
                     HStack(spacing: 12) {
                         BetButton(label: "Yes", odds: yesOdds)
@@ -103,17 +110,17 @@ struct BetButton: View {
 // MARK: - StreamFeedView
 
 struct StreamFeedView: View {
-    private let bets: [(video: String, question: String, yesOdds: Int)] = [
-        ("1", "Will more than 5 people join the party?", 73),
-        ("2", "Will he catch the red ball?", 41),
-        ("3", "Will the girl fall off the wall?", 58),
+    private let bets: [(video: String, question: String, wager: String, yesOdds: Int)] = [
+        ("1", "Will more than 5 people join the party?", "$823", 73),
+        ("2", "Will he catch the red ball?", "$2.3k", 41),
+        ("3", "Will the man fall off the wall?", "$114", 58),
     ]
 
     var body: some View {
         ScrollView(.vertical, showsIndicators: false) {
             LazyVStack(spacing: 0) {
                 ForEach(bets, id: \.video) { bet in
-                    BetView(videoName: bet.video, question: bet.question, yesOdds: bet.yesOdds)
+                    BetView(videoName: bet.video, question: bet.question, wager: bet.wager, yesOdds: bet.yesOdds)
                         .frame(height: UIScreen.main.bounds.height)
                 }
             }

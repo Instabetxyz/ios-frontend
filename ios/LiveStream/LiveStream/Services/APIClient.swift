@@ -97,12 +97,29 @@ class APIClient: ObservableObject {
 
     // MARK: - Markets
 
-    func createMarket(streamUrl: String, condition: String) async throws {
+    func createMarket(streamUrl: String, condition: String, title: String? = nil, initialLiquidityWei: String? = nil) async throws {
         if useMocks { return }
-        var req = URLRequest(url: URL(string: "\(baseUrl)/api/markets")!)
+        var req = URLRequest(url: URL(string: "\(baseUrl)/v1/stream/mock")!)
         req.httpMethod = "POST"
         req.setValue("application/json", forHTTPHeaderField: "Content-Type")
-        req.httpBody = try JSONEncoder().encode(["streamUrl": streamUrl, "condition": condition])
-        _ = try await URLSession.shared.data(for: req)
+        var body: [String: Any] = [
+            "stream_url": streamUrl,
+            "condition": condition
+        ]
+        if let title { body["title"] = title }
+        if let initialLiquidityWei { body["initial_liquidity_wei"] = initialLiquidityWei }
+        req.httpBody = try JSONSerialization.data(withJSONObject: body)
+
+        print("[API] POST /v1/stream")
+        print("[API] URL: \(req.url?.absoluteString ?? "unknown")")
+        print("[API] Body: \(body)")
+
+        let (data, response) = try await URLSession.shared.data(for: req)
+        if let httpResponse = response as? HTTPURLResponse {
+            print("[API] Status: \(httpResponse.statusCode)")
+        }
+        if let responseStr = String(data: data, encoding: .utf8) {
+            print("[API] Response: \(responseStr)")
+        }
     }
 }

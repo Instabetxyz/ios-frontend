@@ -12,6 +12,7 @@ struct BroadcastView: View {
     @State private var showEndConfirm = false
     @State private var showPermissionAlert = false
     @State private var goLiveError: String?
+    @State private var showMarketResolved = false
     @State private var verifyCondition = "Will the watch be stolen?"
 
     var body: some View {
@@ -28,6 +29,11 @@ struct BroadcastView: View {
             .navigationTitle(broadcaster.isLive ? "" : "Go Live")
             .navigationBarTitleDisplayMode(.inline)
             .toolbarColorScheme(.dark, for: .navigationBar)
+            .alert("Market Resolved", isPresented: $showMarketResolved) {
+                Button("OK") {}
+            } message: {
+                Text("The stream has ended and the market has been resolved.")
+            }
         }
     }
 
@@ -153,9 +159,6 @@ struct BroadcastView: View {
                                 .clipShape(Capsule())
                         }
                     }
-
-                    // MachineFi verification panel
-                    machineFiPanel
                 }
                 .padding()
                 .background(.black.opacity(0.6))
@@ -167,64 +170,6 @@ struct BroadcastView: View {
             }
             Button("Keep Streaming", role: .cancel) {}
         }
-    }
-
-    private var machineFiPanel: some View {
-        VStack(alignment: .leading, spacing: 6) {
-            TextField("Verify condition", text: $verifyCondition, axis: .vertical)
-                .font(.caption)
-                .foregroundStyle(.white)
-                .tint(.white)
-                .padding(.horizontal, 8)
-                .padding(.vertical, 5)
-                .background(.white.opacity(0.15))
-                .clipShape(RoundedRectangle(cornerRadius: 8))
-                .lineLimit(1...3)
-
-            HStack {
-                Text("MachineFi Verify")
-                    .font(.caption)
-                    .fontWeight(.semibold)
-                    .foregroundStyle(.white.opacity(0.8))
-                Spacer()
-                Button {
-                    guard let sid = currentStreamId else { return }
-                    Task { await machinefi.checkStream(streamId: sid, condition: verifyCondition) }
-                } label: {
-                    if machinefi.isChecking {
-                        ProgressView().tint(.white).scaleEffect(0.7)
-                    } else {
-                        Text("Check")
-                            .font(.caption)
-                            .fontWeight(.semibold)
-                            .padding(.horizontal, 12)
-                            .padding(.vertical, 5)
-                            .background(Color.purple)
-                            .foregroundStyle(.white)
-                            .clipShape(Capsule())
-                    }
-                }
-                .disabled(machinefi.isChecking || currentStreamId == nil)
-            }
-
-            if let result = machinefi.lastResult {
-                HStack(alignment: .top, spacing: 6) {
-                    Image(systemName: result.triggered ? "checkmark.circle.fill" : "xmark.circle.fill")
-                        .foregroundStyle(result.triggered ? .green : .red)
-                        .font(.caption)
-                    Text(result.explanation)
-                        .font(.caption2)
-                        .foregroundStyle(.white.opacity(0.9))
-                        .lineLimit(3)
-                }
-            } else if let err = machinefi.errorMessage {
-                Text(err)
-                    .font(.caption2)
-                    .foregroundStyle(.red.opacity(0.8))
-                    .lineLimit(2)
-            }
-        }
-        .padding(.top, 4)
     }
 
     private var liveBadge: some View {
@@ -262,13 +207,21 @@ struct BroadcastView: View {
             currentStreamId = streamId
             broadcaster.startBroadcast(streamId: streamId)
 
-            // TODO: Market creation disabled for now
-            // let streamUrl = APIClient.shared.publicHlsUrl(for: streamId).absoluteString
-            // let condition = resolveCondition.trimmingCharacters(in: .whitespaces)
-            // _ = try await APIClient.shared.createMarket(
-            //     streamUrl: streamUrl,
-            //     condition: condition
-            // )
+            Task { @MainActor in
+                try? await Task.sleep(for: .seconds(10))
+                await endStream()
+                try? await Task.sleep(for: .milliseconds(400))
+                showMarketResolved = true
+            }
+
+            let streamUrl = APIClient.shared.publicHlsUrl(for: streamId).absoluteString
+            let condition = resolveCondition.trimmingCharacters(in: .whitespaces)
+            _ = try await APIClient.shared.createMarket(
+                streamUrl: streamUrl,
+                condition: condition,
+                title: streamTitle.isEmpty ? nil : streamTitle,
+                initialLiquidityWei: "500000000000000000"
+            )
         } catch {
             goLiveError = error.localizedDescription
         }
@@ -282,20 +235,14 @@ struct BroadcastView: View {
         currentStreamId = nil
         streamTitle = ""
         resolveCondition = "Will the watch be stolen?"
-        broadcaster.stopSession()
     }
 
     private func checkPermissions() async -> Bool {
-        let videoStatus = AVCaptureDevice.authorizationStatus(for: .video)
-        let audioStatus = AVCaptureDevice.authorizationStatus(for: .audio)
-
-        if videoStatus == .notDetermined {
+        let status = AVCaptureDevice.authorizationStatus(for: .video)
+        if status == .notDetermined {
             return await AVCaptureDevice.requestAccess(for: .video)
         }
-        if audioStatus == .notDetermined {
-            return await AVCaptureDevice.requestAccess(for: .audio)
-        }
-        return videoStatus == .authorized && audioStatus == .authorized
+        return status == .authorized
     }
 
     private func timeString(_ seconds: Int) -> String {

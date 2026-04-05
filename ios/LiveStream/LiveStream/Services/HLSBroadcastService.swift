@@ -14,11 +14,8 @@ class HLSBroadcastService: NSObject, ObservableObject {
     let session = AVCaptureSession()
     private var assetWriter: AVAssetWriter?
     private var videoInput: AVAssetWriterInput?
-    private var audioInput: AVAssetWriterInput?
     private var captureVideoInput: AVCaptureDeviceInput?
-    private var captureAudioInput: AVCaptureDeviceInput?
     private var videoDataOutput: AVCaptureVideoDataOutput?
-    private var audioDataOutput: AVCaptureAudioDataOutput?
     private let captureQueue = DispatchQueue(label: "com.arcadia.capture", qos: .userInitiated)
 
     private var streamId: String?
@@ -35,6 +32,7 @@ class HLSBroadcastService: NSObject, ObservableObject {
     // MARK: - Session setup
 
     func setupSession() throws {
+        guard videoDataOutput == nil else { return } // Already configured
         session.beginConfiguration()
         session.sessionPreset = .high
 
@@ -47,13 +45,6 @@ class HLSBroadcastService: NSObject, ObservableObject {
         if session.canAddInput(videoIn) { session.addInput(videoIn) }
         captureVideoInput = videoIn
 
-        // Audio input
-        if let audioDevice = AVCaptureDevice.default(for: .audio) {
-            let audioIn = try AVCaptureDeviceInput(device: audioDevice)
-            if session.canAddInput(audioIn) { session.addInput(audioIn) }
-            captureAudioInput = audioIn
-        }
-
         // Video data output — feeds sample buffers to AVAssetWriter
         let vOut = AVCaptureVideoDataOutput()
         vOut.videoSettings = [kCVPixelBufferPixelFormatTypeKey as String: kCVPixelFormatType_420YpCbCr8BiPlanarVideoRange]
@@ -61,12 +52,6 @@ class HLSBroadcastService: NSObject, ObservableObject {
         vOut.setSampleBufferDelegate(self, queue: captureQueue)
         if session.canAddOutput(vOut) { session.addOutput(vOut) }
         videoDataOutput = vOut
-
-        // Audio data output
-        let aOut = AVCaptureAudioDataOutput()
-        aOut.setSampleBufferDelegate(self, queue: captureQueue)
-        if session.canAddOutput(aOut) { session.addOutput(aOut) }
-        audioDataOutput = aOut
 
         session.commitConfiguration()
     }
@@ -139,20 +124,10 @@ class HLSBroadcastService: NSObject, ObservableObject {
         let vInput = AVAssetWriterInput(mediaType: .video, outputSettings: videoSettings)
         vInput.expectsMediaDataInRealTime = true
 
-        let audioSettings: [String: Any] = [
-            AVFormatIDKey: kAudioFormatMPEG4AAC,
-            AVSampleRateKey: 44100,
-            AVNumberOfChannelsKey: 2,
-        ]
-        let aInput = AVAssetWriterInput(mediaType: .audio, outputSettings: audioSettings)
-        aInput.expectsMediaDataInRealTime = true
-
         if writer.canAdd(vInput) { writer.add(vInput) }
-        if writer.canAdd(aInput) { writer.add(aInput) }
 
         assetWriter = writer
         videoInput = vInput
-        audioInput = aInput
 
         writer.startWriting()
         // startSession is called on the first sample buffer so the timestamp is accurate
@@ -172,7 +147,6 @@ class HLSBroadcastService: NSObject, ObservableObject {
               let url = currentSegmentUrl else { return }
 
         videoInput?.markAsFinished()
-        audioInput?.markAsFinished()
 
         let index = currentSegmentIndex
         let sid = streamId
@@ -194,7 +168,6 @@ class HLSBroadcastService: NSObject, ObservableObject {
 
         assetWriter = nil
         videoInput = nil
-        audioInput = nil
         isWritingSegment = false
         sessionStarted = false
     }
@@ -228,8 +201,6 @@ class HLSBroadcastService: NSObject, ObservableObject {
 
         if type == .video, let input = videoInput, input.isReadyForMoreMediaData {
             input.append(sampleBuffer)
-        } else if type == .audio, let input = audioInput, input.isReadyForMoreMediaData {
-            input.append(sampleBuffer)
         }
     }
 }
@@ -247,11 +218,10 @@ enum BroadcastError: LocalizedError {
 
 // MARK: - AVCaptureVideoDataOutputSampleBufferDelegate
 
-extension HLSBroadcastService: AVCaptureVideoDataOutputSampleBufferDelegate, AVCaptureAudioDataOutputSampleBufferDelegate {
+extension HLSBroadcastService: AVCaptureVideoDataOutputSampleBufferDelegate {
     nonisolated func captureOutput(_ output: AVCaptureOutput, didOutput sampleBuffer: CMSampleBuffer, from connection: AVCaptureConnection) {
-        let type: AVMediaType = (output is AVCaptureAudioDataOutput) ? .audio : .video
         Task { @MainActor in
-            self.appendSampleBuffer(sampleBuffer, ofType: type)
+            self.appendSampleBuffer(sampleBuffer, ofType: .video)
         }
     }
 }

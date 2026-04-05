@@ -6,16 +6,13 @@ struct BroadcastView: View {
     @StateObject private var broadcaster = HLSBroadcastService.shared
     @StateObject private var machinefi = MachineFiService.shared
     @State private var streamTitle = ""
+    @State private var resolveCondition = "Will the watch be stolen?"
     @State private var isStartingStream = false
     @State private var currentStreamId: String?
     @State private var showEndConfirm = false
     @State private var showPermissionAlert = false
-    @State private var showMarketSheet = false
-    @State private var pendingMarketStreamId: String?
-    @State private var marketCondition = ""
-    @State private var isCreatingMarket = false
-    @State private var createdMarketId: String?
-    @State private var verifyCondition = "Is there a person visible in the frame?"
+    @State private var goLiveError: String?
+    @State private var verifyCondition = "Will the watch be stolen?"
 
     var body: some View {
         NavigationStack {
@@ -45,12 +42,28 @@ struct BroadcastView: View {
                 .padding(.horizontal)
                 .padding(.top, 8)
 
-            VStack(spacing: 20) {
-                TextField("Stream title…", text: $streamTitle)
-                    .textFieldStyle(.roundedBorder)
-                    .padding(.horizontal)
+            VStack(spacing: 16) {
+                VStack(alignment: .leading, spacing: 6) {
+                    Text("Resolve condition")
+                        .font(.caption)
+                        .foregroundStyle(.secondary)
+                        .padding(.horizontal)
+                    TextField("e.g. Will the bike fall into the ditch?", text: $resolveCondition, axis: .vertical)
+                        .textFieldStyle(.roundedBorder)
+                        .lineLimit(2...4)
+                        .padding(.horizontal)
+                }
+
+                if let err = goLiveError {
+                    Text(err)
+                        .font(.caption)
+                        .foregroundStyle(.red)
+                        .multilineTextAlignment(.center)
+                        .padding(.horizontal)
+                }
 
                 Button {
+                    goLiveError = nil
                     Task { await goLive() }
                 } label: {
                     HStack {
@@ -69,17 +82,17 @@ struct BroadcastView: View {
                     .clipShape(RoundedRectangle(cornerRadius: 14))
                     .padding(.horizontal)
                 }
-                .disabled(streamTitle.isEmpty || isStartingStream)
+                .disabled(resolveCondition.trimmingCharacters(in: .whitespaces).count < 5 || isStartingStream)
             }
             .padding(.top, 24)
 
             Spacer()
         }
-        .onAppear { broadcaster.startSession() }
-        .onDisappear { if !broadcaster.isLive { broadcaster.stopSession() } }
-        .sheet(isPresented: $showMarketSheet) {
-            marketCreationSheet
+        .onAppear {
+            try? broadcaster.setupSession()
+            broadcaster.startSession()
         }
+        .onDisappear { if !broadcaster.isLive { broadcaster.stopSession() } }
         .alert("Camera Access Needed", isPresented: $showPermissionAlert) {
             Button("Open Settings") {
                 if let url = URL(string: UIApplication.openSettingsURLString) {
@@ -158,6 +171,16 @@ struct BroadcastView: View {
 
     private var machineFiPanel: some View {
         VStack(alignment: .leading, spacing: 6) {
+            TextField("Verify condition", text: $verifyCondition, axis: .vertical)
+                .font(.caption)
+                .foregroundStyle(.white)
+                .tint(.white)
+                .padding(.horizontal, 8)
+                .padding(.vertical, 5)
+                .background(.white.opacity(0.15))
+                .clipShape(RoundedRectangle(cornerRadius: 8))
+                .lineLimit(1...3)
+
             HStack {
                 Text("MachineFi Verify")
                     .font(.caption)
@@ -238,113 +261,16 @@ struct BroadcastView: View {
             )
             currentStreamId = streamId
             broadcaster.startBroadcast(streamId: streamId)
-            pendingMarketStreamId = streamId
-            showMarketSheet = true
+
+            // TODO: Market creation disabled for now
+            // let streamUrl = APIClient.shared.publicHlsUrl(for: streamId).absoluteString
+            // let condition = resolveCondition.trimmingCharacters(in: .whitespaces)
+            // _ = try await APIClient.shared.createMarket(
+            //     streamUrl: streamUrl,
+            //     condition: condition
+            // )
         } catch {
-            broadcaster.error = error.localizedDescription
-        }
-    }
-
-    private var marketCreationSheet: some View {
-        NavigationStack {
-            VStack(spacing: 24) {
-                VStack(spacing: 8) {
-                    Image(systemName: "chart.bar.xaxis")
-                        .font(.system(size: 44))
-                        .foregroundStyle(.purple)
-                    Text("Create Prediction Market")
-                        .font(.title3)
-                        .fontWeight(.bold)
-                    Text("Let viewers bet on what happens in your stream")
-                        .font(.subheadline)
-                        .foregroundStyle(.secondary)
-                        .multilineTextAlignment(.center)
-                }
-                .padding(.top, 16)
-
-                VStack(alignment: .leading, spacing: 8) {
-                    Text("Bet Condition")
-                        .font(.subheadline)
-                        .fontWeight(.medium)
-                    TextField("e.g. Will I finish this feature in 60 seconds?", text: $marketCondition, axis: .vertical)
-                        .textFieldStyle(.roundedBorder)
-                        .lineLimit(3...5)
-                }
-                .padding(.horizontal)
-
-                if let marketId = createdMarketId {
-                    HStack {
-                        Image(systemName: "checkmark.circle.fill")
-                            .foregroundStyle(.green)
-                        Text("Market created!")
-                            .fontWeight(.semibold)
-                        Spacer()
-                        Text(marketId.prefix(8) + "…")
-                            .font(.caption)
-                            .foregroundStyle(.secondary)
-                            .fontDesign(.monospaced)
-                    }
-                    .padding()
-                    .background(Color.green.opacity(0.1))
-                    .clipShape(RoundedRectangle(cornerRadius: 10))
-                    .padding(.horizontal)
-                }
-
-                Spacer()
-
-                VStack(spacing: 12) {
-                    Button {
-                        Task { await createMarket() }
-                    } label: {
-                        HStack {
-                            if isCreatingMarket {
-                                ProgressView().tint(.white)
-                            } else {
-                                Image(systemName: "plus.circle.fill")
-                                Text("Create Market")
-                                    .fontWeight(.bold)
-                            }
-                        }
-                        .frame(maxWidth: .infinity)
-                        .padding()
-                        .background(.purple)
-                        .foregroundStyle(.white)
-                        .clipShape(RoundedRectangle(cornerRadius: 14))
-                    }
-                    .disabled(marketCondition.trimmingCharacters(in: .whitespaces).count < 5 || isCreatingMarket || createdMarketId != nil)
-
-                    Button("Skip") { showMarketSheet = false }
-                        .foregroundStyle(.secondary)
-                }
-                .padding(.horizontal)
-                .padding(.bottom, 32)
-            }
-            .navigationBarTitleDisplayMode(.inline)
-            .toolbar {
-                ToolbarItem(placement: .topBarTrailing) {
-                    Button("Done") { showMarketSheet = false }
-                }
-            }
-        }
-        .presentationDetents([.medium, .large])
-    }
-
-    private func createMarket() async {
-        guard let streamId = pendingMarketStreamId else { return }
-        let condition = marketCondition.trimmingCharacters(in: .whitespaces)
-        guard condition.count >= 5 else { return }
-        isCreatingMarket = true
-        defer { isCreatingMarket = false }
-        do {
-            let streamUrl = APIClient.shared.hlsUrl(for: streamId).absoluteString
-            let result = try await StreamBetClient.shared.createStreamMarket(
-                streamUrl: streamUrl,
-                condition: condition,
-                title: streamTitle.isEmpty ? nil : streamTitle
-            )
-            createdMarketId = result.marketId
-        } catch {
-            print("Failed to create market: \(error)")
+            goLiveError = error.localizedDescription
         }
     }
 
@@ -355,6 +281,7 @@ struct BroadcastView: View {
         }
         currentStreamId = nil
         streamTitle = ""
+        resolveCondition = "Will the watch be stolen?"
         broadcaster.stopSession()
     }
 

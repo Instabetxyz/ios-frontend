@@ -8,7 +8,8 @@ class StreamBetClient: ObservableObject {
 
     var authToken: String?
 
-    private let base = Constants.streamBetBaseUrl
+    // TODO: Replace with your own API base URL when available
+    private let base = ""
     private let decoder: JSONDecoder = {
         let d = JSONDecoder()
         d.keyDecodingStrategy = .convertFromSnakeCase

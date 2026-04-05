@@ -26,9 +26,9 @@ class StreamBetWebSocket: ObservableObject {
 
     func connect(token: String?) {
         disconnect()
-        var urlString = Constants.streamBetWsUrl
-        if let token { urlString += "?token=\(token)" }
-        guard let url = URL(string: urlString) else { return }
+        // TODO: Replace with your own websocket URL when available
+        let urlString = ""
+        guard !urlString.isEmpty, let url = URL(string: urlString) else { return }
 
         let session = URLSession(configuration: .default)
         task = session.webSocketTask(with: url)

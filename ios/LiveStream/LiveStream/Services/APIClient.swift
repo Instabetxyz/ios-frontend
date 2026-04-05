@@ -87,7 +87,22 @@ class APIClient: ObservableObject {
         URL(string: "\(baseUrl)/api/streams/\(streamId)/live.m3u8")!
     }
 
+    func publicHlsUrl(for streamId: String) -> URL {
+        URL(string: "\(Constants.streamingUrl)/api/streams/\(streamId)/live.m3u8")!
+    }
+
     func archivedUrl(for streamId: String) -> URL {
         URL(string: "\(baseUrl)/api/streams/\(streamId)/archived")!
+    }
+
+    // MARK: - Markets
+
+    func createMarket(streamUrl: String, condition: String) async throws {
+        if useMocks { return }
+        var req = URLRequest(url: URL(string: "\(baseUrl)/api/markets")!)
+        req.httpMethod = "POST"
+        req.setValue("application/json", forHTTPHeaderField: "Content-Type")
+        req.httpBody = try JSONEncoder().encode(["streamUrl": streamUrl, "condition": condition])
+        _ = try await URLSession.shared.data(for: req)
     }
 }

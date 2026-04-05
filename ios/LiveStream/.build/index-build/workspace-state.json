@@ -13,11 +13,11 @@
           "location" : "/Users/alok/Projects/Hackathons/Ethglobal-cannes-2026/ios/LiveStream",
           "name" : "LiveStream"
         },
-        "path" : "/Users/alok/Projects/Hackathons/Ethglobal-cannes-2026/ios/LiveStream/Frameworks/SwiftBigInt.xcframework",
+        "path" : "/Users/alok/Projects/Hackathons/Ethglobal-cannes-2026/ios/LiveStream/Frameworks/SolanaWeb3.xcframework",
         "source" : {
           "type" : "local"
         },
-        "targetName" : "SwiftBigInt"
+        "targetName" : "SolanaWeb3"
       },
       {
         "kind" : {
@@ -49,11 +49,11 @@
           "location" : "/Users/alok/Projects/Hackathons/Ethglobal-cannes-2026/ios/LiveStream",
           "name" : "LiveStream"
         },
-        "path" : "/Users/alok/Projects/Hackathons/Ethglobal-cannes-2026/ios/LiveStream/Frameworks/SolanaWeb3.xcframework",
+        "path" : "/Users/alok/Projects/Hackathons/Ethglobal-cannes-2026/ios/LiveStream/Frameworks/DynamicSDKSwift.xcframework",
         "source" : {
           "type" : "local"
         },
-        "targetName" : "SolanaWeb3"
+        "targetName" : "DynamicSDKSwiftBinary"
       },
       {
         "kind" : {
@@ -67,11 +67,11 @@
           "location" : "/Users/alok/Projects/Hackathons/Ethglobal-cannes-2026/ios/LiveStream",
           "name" : "LiveStream"
         },
-        "path" : "/Users/alok/Projects/Hackathons/Ethglobal-cannes-2026/ios/LiveStream/Frameworks/DynamicSDKSwift.xcframework",
+        "path" : "/Users/alok/Projects/Hackathons/Ethglobal-cannes-2026/ios/LiveStream/Frameworks/SwiftBigInt.xcframework",
         "source" : {
           "type" : "local"
         },
-        "targetName" : "DynamicSDKSwiftBinary"
+        "targetName" : "SwiftBigInt"
       }
     ],
     "dependencies" : [

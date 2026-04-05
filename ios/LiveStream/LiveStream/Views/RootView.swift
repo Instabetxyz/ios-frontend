@@ -5,7 +5,9 @@ struct RootView: View {
 
     var body: some View {
         Group {
-            if appState.isAuthenticated {
+            if !appState.isReady {
+                Color.black.ignoresSafeArea()
+            } else if appState.isAuthenticated {
                 HomeView()
             } else {
                 AuthView()

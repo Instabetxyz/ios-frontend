@@ -35,6 +35,19 @@ struct LoopingVideoPlayer: UIViewRepresentable {
 
 // MARK: - BetView
 
+struct LiveDot: View {
+    @State private var blink = false
+
+    var body: some View {
+        Circle()
+            .fill(.red)
+            .frame(width: 15, height: 15)
+            .opacity(blink ? 1 : 0.2)
+            .animation(.easeInOut(duration: 0.8).repeatForever(autoreverses: true), value: blink)
+            .onAppear { blink = true }
+    }
+}
+
 struct BetView: View {
     let videoName: String
     let question: String
@@ -48,6 +61,20 @@ struct BetView: View {
             ZStack(alignment: .bottom) {
                 LoopingVideoPlayer(videoName: videoName, videoExtension: "mp4")
                     .ignoresSafeArea()
+
+                // Live indicator
+                HStack {
+                    Spacer()
+                    HStack(spacing: 6) {
+                        LiveDot()
+                        Text("LIVE")
+                            .font(.system(size: 12, weight: .bold))
+                            .foregroundStyle(.white)
+                    }
+                }
+                .padding(.top, geo.safeAreaInsets.top + 50)
+                .padding(.trailing, 40)
+                .frame(maxHeight: .infinity, alignment: .top)
 
                 // Gradient overlay — covers bottom third
                 LinearGradient(

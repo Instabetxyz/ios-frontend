@@ -12,6 +12,7 @@ private enum SessionKeys {
 @MainActor
 class AppState: ObservableObject {
     @Published var isAuthenticated = false
+    @Published var isReady = false
     @Published var walletAddress: String?
     @Published var userName: String?
     @Published var authToken: String?
@@ -35,15 +36,18 @@ class AppState: ObservableObject {
 
         guard let sdk = try? DynamicSDK.shared else {
             print("⚠️ DynamicSDK not initialized yet")
+            isReady = true
             return
         }
 
         sdk.auth.authenticatedUserChanges
             .receive(on: DispatchQueue.main)
             .sink { [weak self] user in
-                self?.isAuthenticated = user != nil
-                self?.userName = user?.email
-                self?.persistSession()
+                guard let self else { return }
+                self.isAuthenticated = user != nil
+                self.userName = user?.email
+                self.isReady = true
+                self.persistSession()
             }
             .store(in: &cancellables)
 

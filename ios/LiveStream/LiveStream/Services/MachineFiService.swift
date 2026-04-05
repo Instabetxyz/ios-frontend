@@ -26,7 +26,7 @@ class MachineFiService: ObservableObject {
         let localUrl = APIClient.shared.hlsUrl(for: streamId).absoluteString
         let publicUrl = localUrl.replacingOccurrences(
             of: Constants.backendBaseUrl,
-            with: Constants.publicBackendUrl
+            with: Constants.backendBaseUrl
         )
 
         isChecking = true

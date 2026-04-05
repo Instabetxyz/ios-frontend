@@ -52,11 +52,7 @@ struct AuthView: View {
 
                     Text("Arcadia")
                         .font(.system(size: 36, weight: .bold))
-                        .foregroundStyle(.white)
-
-                    Text("Go live on 0G")
-                        .font(.subheadline)
-                        .foregroundStyle(.gray)
+                        .foregroundStyle(.white)        
                 }
 
                 Spacer()

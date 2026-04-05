@@ -5,12 +5,7 @@ struct HomeView: View {
         TabView {
             StreamFeedView()
                 .tabItem {
-                    Label("Feed", systemImage: "play.rectangle.fill")
-                }
-
-            MarketsView()
-                .tabItem {
-                    Label("Markets", systemImage: "chart.bar.xaxis")
+                    Label("Streams", systemImage: "play.rectangle.fill")
                 }
 
             BroadcastView()
